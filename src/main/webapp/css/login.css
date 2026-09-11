@@ -1,0 +1,237 @@
+/* login.css */
+
+body {
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 상단 정렬로 변경 */
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  margin: 0;
+}
+
+.login-container {
+  text-align: center;
+  width: 350px;
+  margin-top: 200px; /* 기존보다 더 상단으로 조정 */
+}
+
+.back-btn-wrap {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.back-btn {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logo-wrap {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  width: 150px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+/*   margin-bottom: 10px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* padding 포함한 정확한 너비 계산 */
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+/*   margin-bottom: 10px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: 'Malgun Gothic', sans-serif;
+}
+
+/* placeholder 투명도 효과도 password에 적용 */
+input[type="password"]::placeholder {
+  color: #aaa;
+  transition: opacity 0.2s ease;
+}
+
+input[type="password"]:focus::placeholder {
+  opacity: 0;
+}
+
+/* 입력창 placeholder 기본 스타일 */
+input::placeholder {
+  color: #aaa;
+  transition: opacity 0.2s ease;
+}
+
+/* 포커스되면 placeholder 투명하게 */
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.find-links {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.find-links a {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.find-links a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.divider-bar {
+  color: #ccc;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.divider {
+  margin: 20px 0;
+  font-size: 14px;
+  color: gray;
+  position: relative;
+  text-align: center;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  display: inline-block;
+  width: 40%;
+  height: 1px;
+  background-color: #ccc;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.social-login button {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: #f7fafc;
+  text-align: left;
+}
+
+.social-login a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ padding: 10px 20px 10px 90px;  border-radius: 10px;
+  background-color: #F3F9FA;
+  color: #333;
+  text-decoration: none;
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  width: 100%; /* 전체 너비로 */
+  box-sizing: border-box;
+}
+
+.social-login a:hover {
+  background-color: #eef3f8;
+}
+
+.social-login img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.guest-order {
+  display: block;
+  margin: 10px 0;
+  color: gray;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.signup-section {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-section a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* 추가 스타일 */
+.form-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  color: gray;
+  font-size: 12px;
+  margin-top: auto;
+  padding: 10px 0;
+}

@@ -1,0 +1,150 @@
+
+@charset "UTF-8";
+
+/* ===== 주문/배송/환불 공통 스타일 ===== */
+
+/* ===== 필터 및 상단 헤더 ===== */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.filter-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 240px;
+}
+.search-button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #111;
+  color: #fff;
+  cursor: pointer;
+}
+.search-button:hover {
+  background-color: #333;
+}
+
+.custom-select {
+  padding: 6px 32px 6px 10px;  
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='gray' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658c-.566-.638-.106-1.658.753-1.658h9.592c.86 0 1.32 1.02.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+/* ===== 주문 테이블 ===== */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.order-table th,
+.order-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.order-table thead {
+  background-color: #f8f8f8;
+}
+.order-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.order-table a {
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===== 상태 드롭다운 ===== */
+.status-select {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* ===== 하단 버튼 ===== */
+.order-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.cancel-button,
+.save-button {
+  background-color: #111;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 100px;
+}
+.save-button:hover {
+  background-color: #333;
+}
+.cancel-button {
+  background-color: #666;
+}
+.cancel-button:hover {
+  background-color: #444;
+}
+
+/* ===== 페이지네이션 ===== */
+.pagination-container {
+  text-align: center;
+  margin-top: 30px;
+}
+.pagination {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pagination li {
+  margin: 0 6px;
+}
+.pagination li a {
+  display: block;
+  padding: 8px 14px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+.pagination li a:hover {
+  background-color: #f0f0f0;
+}
+.pagination li.active a {
+  font-weight: bold;
+}

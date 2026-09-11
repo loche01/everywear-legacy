@@ -1,0 +1,8 @@
+<%@ page contentType="application/json; charset=UTF-8" %>
+<jsp:useBean id="qDao" class="DAO.QnaDAO"/>
+<%
+		String id = (String)session.getAttribute("id");
+		boolean saved = qDao.updateQna(request);
+		if (!saved) response.setStatus(409);
+        out.print(saved ? "{\"result\":\"success\"}" : "{\"result\":\"fail\"}");
+%>

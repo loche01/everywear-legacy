@@ -1,0 +1,59 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Java/Eclipse build outputs
+build/
+target/
+bin/
+out/
+_build/
+*.class
+*.war
+src/main/webapp/WEB-INF/classes/
+
+# Local application/runtime state
+_runtime/
+logs/
+*.log
+*.pid
+*.sock
+hs_err_pid*
+mysql-data/
+db-data/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+config/*.env
+!config/*.env.example
+config/setenv.sh
+setenv.sh
+.secrets/
+secrets/
+credentials/
+*.credential
+*.credentials
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+*.jks
+application-local.properties
+
+# IDE/editor temporary files; Eclipse project settings remain tracked
+.metadata/
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+.vscode/
+
+# Forensic preservation artifacts are stored outside this development repo
+_recovery_records/original_state/
+_recovery_records/final_verification/
+_recovery_records/**/*.patch
+_recovery_records/**/*.tar

@@ -1,0 +1,127 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+/* 하위 네비 */
+.sub-nav ul {
+	display: flex;
+	justify-content: center;
+	gap: 40px; /* 항목 간 간격 */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sub-nav ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+	font-family: 'Malgun Gothic', sans-serif;
+	font-weight: bold;
+}
+
+.sub-nav ul li a:hover {
+	color: #015FC1;
+}
+
+.sub-nav ul li a.active {
+	color: #015FC1; /* 호버와 동일한 색상 */
+}
+
+.product-detail-wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 20px;
+}
+
+.product-top {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	margin-bottom: 60px;
+}
+
+.product-images {
+	flex: 1;
+	min-width: 300px;
+}
+
+.product-images img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.product-info {
+	flex: 1;
+	min-width: 280px;
+}
+
+.color-options {
+	display: flex;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.color {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.color.gray {
+	background-color: #666;
+}
+
+.color.black {
+	background-color: #111;
+}
+
+.size-select select {
+	margin-top: 8px;
+	padding: 6px;
+	width: 100%;
+}
+
+.buy-buttons {
+	margin-top: 20px;
+}
+
+.buy-now {
+	background: black;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.wishlist {
+	background: none;
+	border: 1px solid #ccc;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.product-details img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.product-review {
+	margin-top: 40px;
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+}
+
+.review-score {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.review-graph p {
+	font-size: 14px;
+	margin: 5px 0;
+}

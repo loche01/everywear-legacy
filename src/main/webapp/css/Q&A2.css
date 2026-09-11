@@ -1,0 +1,314 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+.content2 {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h3 {
+	text-align: center;
+	font-size: 20px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+}
+
+.container {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.sidebar2 {
+	position: fixed;
+	top: 50%;
+	left: 150px;
+	transform: translateY(-50%);
+	width: 180px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sidebar2 ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar2 ul li a {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.sidebar2 ul li a:hover {
+	color: #015FC1;
+	font-weight: bold;
+}
+
+.content {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.notice-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+/* 헤더 행 */
+.notice-table .qna-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 10px;
+  border-bottom: 2px solid #bbb;
+  background-color: transparent;
+}
+
+/* 데이터 행 */
+.notice-table tr:not(.qna-header) {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.notice-table tr:not(.qna-header):hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* 공통 셀 스타일 */
+.notice-table td,
+.notice-table .qna-header td {
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+/* 각 열 너비 */
+.notice-table td.no,
+.notice-table .qna-header td.no {
+  width: 60px;
+  min-width: 60px;
+  justify-content: center;
+  color: #888;
+  font-weight: bold;
+}
+
+.notice-table td.title,
+.notice-table .qna-header td.title {
+  width: 420px;
+  text-align: left;
+  font-weight: bold;
+  color: #111;
+}
+
+.notice-table td.title a {
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.notice-table td.title a:hover {
+  color: #015FC1;
+}
+
+.notice-table td.status,
+.notice-table .qna-header td.status {
+  width: 100px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.notice-table td.status-complete {
+  color: #1eb768;
+}
+
+.notice-table td.status-wait {
+  color: #888;
+}
+
+.notice-table td.date,
+.notice-table .qna-header td.date {
+  width: 140px;
+  justify-content: center;
+  color: #555;
+  font-size: 13px;
+}
+
+.notice-table td.type,
+.notice-table .qna-header td.type {
+  width: 100px;
+  justify-content: center;
+  color: #555;
+  font-size: 13px;
+}
+
+/* 링크 스타일 */
+.notice-table a {
+  color: black;
+  text-decoration: none;
+}
+
+.notice-table a:active {
+  transform: scale(0.98);
+}
+
+.write-btn-wrapper {
+	text-align: right;
+	margin-top: 20px;
+}
+
+.write-btn {
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	font-size: 14px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.write-btn:hover {
+	background-color: #333;
+}
+
+/* 페이지네이션 그대로 유지 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 30px 0;
+}
+
+.pagination a {
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #888;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination .active {
+  font-weight: bold;
+  color: black;
+  border-color: black;
+}
+
+.invisible-button {
+  visibility: hidden;
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+}
+
+.pagination a,
+.pagination .invisible-button {
+	display: inline-block;
+	width: 40px;            /* 고정된 너비로 중앙 유지 */
+	text-align: center;
+	cursor: pointer;
+	font-size: 13px;
+	color: #888;
+	padding: 6px 0;         /* 양옆 패딩 제거, 높이만 확보 */
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.pagination .invisible-button {
+	visibility: hidden;
+}
+
+.pagination a:hover {
+	background-color: #f0f0f0;
+}
+
+.pagination .active {
+	font-weight: bold;
+	color: black;
+	border-color: black;
+}
+
+.footer-bottom {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+/* 기타 */
+input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+#preview-image {
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	object-fit: cover;
+}
+
+.delete-btn {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	font-size: 14px;
+	cursor: pointer;
+	line-height: 24px;
+}
+
+.product-box {
+	display: flex;
+	align-items: flex-start;
+	gap: 30px;
+}
+
+.product-img {
+	width: 100px;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 6px;
+}

@@ -1,0 +1,264 @@
+/* 전체 폰트와 기본 설정 */
+body {
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-btn-wrap {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 10;
+}
+
+.back-btn {
+	font-size: 24px;
+	text-decoration: none;
+	color: black;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.logo-wrap {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.logo-img {
+	width: 150px;
+}
+
+/* 회원가입 컨테이너 */
+.signup-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.signup-container h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* 라벨 */
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 입력창 placeholder 기본 스타일 */
+input::placeholder {
+  color: #aaa;
+  transition: opacity 0.2s ease;
+}
+
+/* 포커스되면 placeholder 투명하게 */
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.email-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.email-input-group input,
+.email-input-group select {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 42px;
+}
+
+.email-input-group .at-symbol {
+  font-size: 14px;
+  color: #444;
+  margin-top: 2px;
+}
+
+/* 기본 입력 필드 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* 주소 그룹: 우편번호 + 검색 버튼 */
+.address-group {
+  display: flex;
+  gap: 10px;
+/*   margin-bottom: 10px; */
+}
+
+.address-group input {
+  flex: 1;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* 검색 버튼도 높이 맞춤 */
+.search-btn {
+  height: 40px;
+  padding: 0 14px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 기본 주소 & 나머지 주소 */
+input#address1,
+input#address2 {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#checkResult{
+	  font-size: 13px;
+  	margin-top: 2px;
+}
+
+#pwCheckMsg {
+  font-size: 13px;
+  margin-top: 2px;
+/*   height: 15px; 공간 확보 */
+}
+
+#pwCheck {
+  font-size: 13px;
+  margin-top: 2px;
+/*   height: 15px; 공간 확보 */
+}
+
+.match {
+  color: green;
+}
+
+.not-match {
+  color: red;
+}
+
+.gender-group {
+  display: flex;
+  gap: 12px; /* ← 라디오 버튼 사이 간격 (살짝 좁게) */
+  align-items: center;
+  font-size: 14px;
+}
+
+/* 라디오 버튼과 텍스트 사이 간격 줄이기 */
+.gender-group input[type="radio"] {
+  margin-right: 2px; /* 기존보다 더 타이트하게 */
+}
+
+/* 생년월일 */
+.birth-wrapper {
+    display: flex;
+    flex : 1;
+    align-items: center;
+    gap: 10px; /* 입력 필드와 라벨 간 간격 */
+}
+
+.birth-container {
+    display: flex;
+    flex : 1;
+    align-items: center;
+    gap: 8px; /* 입력 필드 간 간격 */
+}
+
+.birth-input {
+    position: relative;
+    display: flex; /* ✅ 가로 정렬 */
+    align-items: center;
+}
+
+.birth-input input {
+    width: 60px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 15px; /* 둥글게 */
+    background-color: #f7fafd;
+    font-size: 16px;
+    padding-right: 18px; /* 오른쪽 공간 확보 */
+}
+
+.birth-input span {
+    position: absolute;
+    right: 8px; /* 년, 월, 일 위치 조정 */
+    font-size: 14px;
+    color: #555;
+}
+
+/* 키 & 몸무게 */
+.hw-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hw-group input {
+  flex: 1;
+}
+
+/* 회원가입 버튼 */
+.signup-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signup-btn:hover {
+  background-color: #222;
+}
+
+
+/* 푸터 */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin: 30px 0 10px;
+}

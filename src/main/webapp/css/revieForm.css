@@ -1,0 +1,284 @@
+/* reviewForm.css */
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+.content2 {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h3 {
+	text-align: center;
+	font-size: 20px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+}
+
+.container {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.sidebar2 {
+	position: fixed;
+	top: 50%;
+	left: 150px;
+	transform: translateY(-50%);
+	width: 180px;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sidebar2 ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar2 ul li a {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.sidebar2 ul li a:hover {
+	color: #015FC1;
+	font-weight: bold;
+}
+
+.content {
+	flex: 1;
+	padding: 0 30px;
+}
+
+.write-btn-wrapper2 {
+	text-align: right;
+	margin-top: 20px;
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: center;
+}
+
+.write-btn2 {
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	font-size: 14px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin-right: 10px;
+}
+
+.write-btn2:hover {
+	background-color: #333;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	margin: 30px 0;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pagination .invisible-button {
+	visibility: hidden;
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}
+
+.pagination a {
+	display: inline-block;
+	margin: 0 5px;
+	cursor: pointer;
+	font-size: 13px;
+	color: #888;
+	padding: 6px 12px;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.pagination a:hover {
+	background-color: #f0f0f0;
+}
+
+.pagination .active {
+	font-weight: bold;
+	color: black;
+	border-color: black;
+}
+
+.footer-bottom {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+/* 폼 전체 컨테이너 */
+.form-container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 0px;
+	font-family: 'Arial', sans-serif;
+}
+
+/* 라벨 및 입력 영역 */
+label {
+	display: block;
+	margin: 15px 0 5px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+select,
+input[type="text"],
+textarea {
+	width: 100%;
+	padding: 12px 30px 12px 12px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #f6fafd;
+	font-size: 14px;
+	box-sizing: border-box;
+	transition: border-color 0.2s;
+}
+
+select:focus,
+input[type="text"]:focus,
+textarea:focus {
+	border-color: #999;
+	outline: none;
+}
+
+input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+/* 업로드된 이미지 영역 */
+.preview-wrapper {
+	display: grid;
+	grid-template-columns: repeat(5, 100px);
+	gap: 10px;
+	margin-top: 10px;
+	align-items: start;
+}
+
+.preview-image-box {
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+/* 이미지 개수 */
+.image-count {
+	font-size: 13px;
+	color: #888;
+	margin-top: 8px;
+	text-align: left;
+}
+
+/* 이미지 추가 박스 */
+.upload-box {
+	width: 100px;
+	height: 100px;
+	border: 2px dashed #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 6px;
+	font-size: 30px;
+	color: #ccc;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
+	align-self: start;
+	margin-top: 0;
+}
+
+.upload-box:hover {
+	border-color: #999;
+}
+
+.delete-btn {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	font-size: 14px;
+	cursor: pointer;
+	line-height: 24px;
+}
+
+/* 별점 */
+.star-rating {
+	display: flex;
+	flex-direction: row;
+	font-size: 40px;
+	cursor: pointer;
+}
+
+.star {
+	color: black;
+	transition: transform 0.2s;
+}
+
+/* 상품 정보 */
+.product-box {
+	display: flex;
+	align-items: flex-start;
+	gap: 30px;
+}
+
+.notice-table td.pdInfo {
+	width: 600px;
+}
+
+.notice-table td.date {
+	width: 90px;
+	vertical-align: top;
+	text-align: right;
+}
+
+.notice-table {
+	border-collapse: collapse;
+	width: 600px;
+	margin: 0px auto 0 auto;
+}
+
+.notice-table tr {
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.notice-table td {
+	padding: 14px 10px;
+	font-size: 14px;
+	line-height: 2.3;
+}
+
+.product-img {
+	width: 100px;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 6px;
+}

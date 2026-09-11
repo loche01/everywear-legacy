@@ -1,0 +1,376 @@
+@charset "UTF-8";
+
+/* 공통 스타일은 admin_styles.jsp에서 관리됨 */
+
+/* 루트 색상 변수 */
+:root {
+    --main-color: #4CAF50;
+    --light-bg: #f9fafb;
+    --border: #e0e0e0;
+    --dark-text: #333;
+    --accent-blue: #0a2963;
+}
+
+/* 공지사항 컨트롤 영역 */
+.notice-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 검색 폼 요소 스타일 - 새로 추가 */
+.search-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.search-box select,
+.search-box input,
+.search-box button {
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.search-box select {
+    min-width: 100px;
+}
+
+.search-box input {
+    flex-grow: 1;
+}
+
+.search-box button {
+    padding: 8px 20px;
+    background-color: #0a2963;
+    color: white;
+    border: none;
+}
+
+.search-box button:hover {
+    background-color: #3e8e41;
+}
+
+/* 테이블 스타일 */
+.notice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.notice-table th, .notice-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.notice-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.notice-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.notice-table .checkbox {
+    width: 40px;
+    text-align: center;
+}
+
+.notice-table .no {
+    width: 60px;
+}
+
+.notice-table .title {
+    width: auto;
+}
+
+.notice-table .date {
+    width: 120px;
+}
+
+.notice-table .views {
+    width: 80px;
+    text-align: center;
+}
+
+.notice-table .status {
+    width: 80px;
+    text-align: center;
+}
+
+.notice-table .actions {
+    width: 120px;
+    text-align: center;
+}
+
+/* 액션 버튼 그룹 */
+.notice-actions {
+    margin: 20px 0;
+}
+
+.notice-actions .btn {
+    margin-right: 10px;
+}
+
+/* 상태 배지 */
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge.important {
+    background-color: #FFEBEE;
+    color: #F44336;
+    border: 1px solid #EF9A9A;
+}
+
+.badge.normal {
+    background-color: #e8eef9;
+    color: #0a2963;
+    border: 1px solid #c8d5ea;
+}
+
+/* 페이지네이션 */
+.pagination {
+    text-align: center;
+    margin: 30px 0 10px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--dark-text);
+    background-color: white;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination a.active {
+    background-color: var(--main-color);
+    color: white;
+    border-color: var(--main-color);
+}
+
+.pagination .disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+    border-color: #eee;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    animation: modalopen 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 50px auto;
+    width: 600px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.confirm-modal {
+    width: 400px;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--dark-text);
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #555;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    margin-top: 5px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* 버튼 스타일 */
+.btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background-color: #0a2963;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #1976D2;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+/* 공지사항 제목 스타일 */
+.important-notice {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: block;
+}
+
+.normal-notice {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: block;
+}
+
+/* 반응형 디자인은 공통 스타일에서 적용됨 */ 

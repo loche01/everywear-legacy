@@ -1,0 +1,274 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	background: linear-gradient(to bottom, #ffffff, #151825);
+	padding-top: 120px;
+}
+
+/* 대분류 카테고리 */
+.sub-nav ul {
+	display: flex;
+	justify-content: center;
+	gap: 40px; /* 항목 간 간격 */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sub-nav ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+	font-family: 'Malgun Gothic', sans-serif;
+	font-weight: bold;
+}
+
+.sub-nav ul li a:hover {
+	color: #015FC1;
+}
+
+.sub-nav ul li a.active {
+	color: #015FC1; /* 호버와 동일한 색상 */
+}
+
+/* 메인 컬렉션 */
+.main-collection {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 80px;
+	padding: 50px 50px;
+	position: relative;
+	flex-wrap: nowrap;
+}
+
+.collection-left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translateX(-10px);
+}
+
+.collection-title {
+	font-size: 38px;
+	font-weight: bold;
+	color: #BBBBBB;
+	margin-bottom: 50px;
+}
+
+.collection-img {
+	width: 480px;
+	height: auto;
+	margin-bottom: 45px;
+}
+
+.collection-right {
+	transform: translateX(120px);
+}
+
+.collection-video {
+	width: 720px;
+	height: auto;
+	border-radius: 6px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 메인 옷 스와이퍼 */
+.swiper {
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+	position: relative; /* 기준점 */
+}
+
+.swiper-slide img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+/* 화살표 색상 + 크기 커스터마이징 */
+.swiper-button-next::after, .swiper-button-prev::after {
+	color: #BBBBBB;
+	font-size: 24px; /* 보기 좋은 크기로 조정 */
+}
+
+/* 화살표 위치 조정 */
+.swiper-button-prev {
+	position: absolute !important;
+	left: -60px !important;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+.swiper-button-next {
+	position: absolute !important;
+	right: -60px !important;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+/* footer */
+.footer-top {
+	display: flex;
+	flex-direction: row; /* ← 세로가 아닌 가로 방향으로 정렬 */
+	justify-content: space-between;
+	flex-wrap: wrap; /* 화면 작아지면 줄바꿈 가능 */
+	border-top: 1px solid #FFFFFF;
+	padding-bottom: 50px;
+	gap: 150px; /* 칼럼 간 간격 */
+}
+
+.footer {
+	background: transparent;
+	color: #FFFFFF;
+	padding: 10px 0;
+	font-family: 'Malgun Gothic', sans-serif;
+	font-size: 13px;
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+}
+
+.footer-col {
+	flex: 1;
+	min-width: 160px;
+}
+
+.footer-col li a {
+	text-decoration: none;
+	color: white;
+}
+
+.footer-left {
+	flex: 1;
+	min-width: 160px;
+}
+
+.footer-col h4 {
+	color: #015FC1;
+	margin-bottom: 10px;
+	font-size: 13px;
+}
+
+.footer-col ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-col ul li {
+	margin: 5px 0;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.footer-bottom {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+/* 메인 중앙 이미지 슬라이더 영역 */
+.slider-container {
+	position: relative;
+	width: 100%;
+	max-width: 1500px;
+	margin: 242px auto;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.slider-wrapper {
+	overflow: hidden;
+	width: 100%;
+}
+
+.slider-track {
+	display: flex;
+	transition: transform 0.45s ease-in-out;
+}
+
+.slide {
+	flex: 0 0 auto;
+	margin-right: 35px; /* 여백 늘림 */
+	max-width: 90vw; /* 화면 너비 기준으로 최대 너비 제한 */
+	display: flex;
+	flex-direction: column;
+}
+
+.slide img {
+	height: 400px;
+	max-width: 100%; /* 컨테이너 넘지 않도록 */
+	width: auto;
+	display: block;
+}
+
+.slide-text {
+	margin-top: 5px;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+	line-height: 1.5;
+}
+
+.slider-btn {
+	background: none;
+	border: none;
+	font-size: 30px;
+	cursor: pointer;
+	padding: 10px;
+	z-index: 1;
+	color: #333;
+}
+
+.slider-btn:hover {
+	color: #015FC1;
+}
+
+/* 메인 하단 이미지 영역 */
+.bottom-image-section {
+	position: relative;
+	width: 100%;
+	height: 140px; /* 또는 생략 가능 */
+	padding-top: 300px;
+	padding-bottom: 200px;
+}
+
+.bottom-image-section .background-logo, .bottom-image-section .main-model
+	{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.bottom-image-section .background-logo {
+	width: 600px;
+	opacity: 0.3;
+	z-index: 1; /* 로고는 뒤로 */
+}
+
+#topBtn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #222; /* 이미지처럼 어두운 배경 */
+	color: white;
+	border: none;
+	border-radius: 50%; /* 동그랗게 */
+	width: 40px;
+	height: 40px;
+	font-size: 14px;
+	cursor: pointer;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	z-index: 9999;
+	transition: background-color 0.3s;
+}
+
+#topBtn:hover {
+	background-color: #444;
+}

@@ -1,0 +1,636 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+.content2 {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 20px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+}
+
+.container {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.user-box {
+	background-color: #f1f1f1;
+	border-radius: 8px;
+	padding: 12px 16px;
+	margin-bottom: 20px;
+	position: fixed;
+	top: 240px;
+	left: 150px;
+	width: 180px;
+	height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.username {
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.user-info {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	row-gap: 4px;
+	font-size: 13px;
+}
+
+.user-info .label {
+	color: #333;
+}
+
+.user-info .value {
+	font-weight: bold;
+	text-align: right;
+}
+
+.sidebar2 {
+	position: fixed;
+	top: 50%;
+	left: 150px;
+	transform: translateY(-50%);
+	width: 180px;
+	height: auto; /* 고정 높이 안 줘도 괜찮으면 auto 추천 */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sidebar2 ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar2 ul li a {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.sidebar2 ul li a:hover {
+	color: #015FC1;
+	font-weight: bold;
+}
+
+.content {
+	flex: 1;
+	padding: 0 30px;
+}
+
+.edit-content {
+	flex: 1;
+	max-width: 720px;
+	margin: 58px auto 0 auto;
+}
+
+.edit-content h3{
+	margin: 0px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 500px;
+	margin: -40px auto 0 auto;
+}
+
+.form-group label {
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 6px;
+	display: block;
+}
+
+.id-box {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+}
+
+.input-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.id-box input[type="text"] {
+  border: none;
+  padding: 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: transparent;
+}
+
+.phone-group input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+  text-align: center;
+}
+
+.name-group{
+	display: flex;
+}
+
+.name label{
+	    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+	
+}
+
+.name-group input[type="text"]{
+	  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newPwd-group input[type="password"]{
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0; 
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* 포커스 시 밑줄 색상 변경 */
+.newPwd-group input[type="password"]:focus {
+  border-bottom: 1px solid #000; /* 원하는 색상으로 바꾸세요 */
+}
+
+.newPwd-group label {
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 6px;
+	display: block;
+}
+
+.newPwd-group{
+	margin-bottom: 10px;
+}
+
+.button-group{
+    display: flex;
+  justify-content: center; /* 버튼 중앙 정렬 */
+  gap: 10px; /* 버튼 간격 */
+  margin-top: 15px;
+}
+
+.button-group button{
+	  padding: 8px 16px;
+  width: 100px;
+    border-radius: 8px;
+  cursor: pointer;   
+}
+
+.button-group .btn1{
+	  border: 1px solid #d4d4d4;
+  background-color: #fff;
+}
+
+.button-group .btn2{
+	  border: 1px solid #d4d4d4;
+  background-color: #d4d4d4;
+  color: #fff;
+}
+
+.authBtn{
+   padding: 10px 12px;
+   font-size: 14px;
+   background-color: black;
+   color: white;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+   white-space: nowrap;
+   width: 100%;
+   text-align: center;
+   margin-top: 10px;
+}
+
+.emailBtn{
+   padding: 10px 12px;
+   font-size: 14px;
+   background-color: black;
+   color: white;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+   white-space: nowrap;
+   width: 100%;
+   text-align: center;
+}
+
+.genderBtn{
+   padding: 0px 12px;
+   font-size: 14px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+   cursor: pointer;
+   white-space: nowrap;
+   width: 60px;
+    height: 34px;
+    margin-top: 20px;
+    margin-left: 35px;
+   text-align: center;
+}
+
+.birthBtn{
+   padding: 0px 12px;
+   font-size: 14px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+   cursor: pointer;
+   white-space: nowrap;
+   width: 60px;
+    height: 34px;
+    margin-left: 38px;
+   text-align: center;
+}
+
+/* input[type="text"], input[type="email"], input[type="number"], input[type="password"],
+	비밀번호 필드 추가 select {
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 8px;
+	border: 0px;
+	box-sizing: border-box;
+	width: 100%;
+	color: #000;
+}
+
+input[type="text"], input[type="number"], select {
+	color: #000; 이름 입력 필드 텍스트 검정색
+}
+
+input::placeholder {
+	color: #aaa;
+	transition: opacity 0.2s ease;
+}
+
+input:focus::placeholder {
+	opacity: 0;
+} */
+
+/* .id-box.with-icon {
+	display: flex;
+	align-items: center;
+	background-color: #f7fbff;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	padding: 10px 12px;
+	font-size: 14px;
+	color: #555;
+}
+
+.id-box .social-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	border-radius: 50%;
+} */
+
+/* phone, height/weight, birth groups */
+.phone-group, .hw-group, .birth-group {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.pwd-group{
+		display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.pwd-group input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* ID와 이메일 readonly 박스 */
+/* .id-box, .email-box {
+	background-color: #f7fbff;
+	padding: 10px 12px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+	color: #BBBBBB;
+} */
+
+.verify-group {
+	display: flex;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.verify-group input[type="text"] {
+	flex: 1;
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+}
+
+/* 변경 버튼 */
+.btn-change {
+	padding: 7px 12px;
+	font-size: 14px;
+	background-color: white;
+	color: black;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	white-space: nowrap; /* ✅ 줄 바꿈 방지 */
+	min-width: 60px; /* ✅ 버튼 너비 확보 (원하는 만큼 조절 가능) */
+	text-align: center;
+}
+
+.btn.white {
+	background-color: white;
+	color: black;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 10px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+/* 제출 버튼 */
+.submit-btn {
+	padding: 12px;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.withdraw-link {
+	display: block;
+	text-align: right; /* ✅ 오른쪽 정렬 */
+	font-size: 12px;
+	color: #BBBBBB;
+	text-decoration: none;
+	margin-top: -5px;
+	margin-right: 4px; /* ✅ 약간 오른쪽 여백 (선택) */
+	margin-bottom: 50px;
+}
+
+.withdraw-link:hover {
+	color: #ccc; /* 색상 유지 */
+	text-decoration: underline;
+}
+
+.guide-text {
+	color: #888;
+	font-size: 13px;
+	margin-top: 5px;
+	margin-bottom: 12px; /* 이 부분이 핵심! */
+	display: block;
+}
+
+.match {
+  color: green;
+  font-size: 12px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.not-match {
+	font-size: 12px;
+  color: red;
+   margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.authBox input{
+	border: 1px solid #ccc;
+	border-radius: 6px;
+  padding: 8px 0;
+  width: 80%;
+    margin-top: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.auth-btns {
+  display: flex;
+  flex-direction: row;  /* 👉 가로로 정렬 */
+  justify-content: center;  /* 가운데 정렬 */
+  gap: 10px;  /* 버튼 사이 간격 */
+  margin-top: 10px;
+}
+
+.auth-btns button {
+  padding: 8px 16px;
+    width: 100px;
+    border-radius: 8px;
+    cursor: pointer;
+} 
+
+.resend-btn{
+	    border: 1px solid #d4d4d4;
+    background-color: #fff;
+}
+
+.confirm-btn {
+    border: 1px solid #d4d4d4;
+    background-color: #d4d4d4;
+    color: #fff;
+}
+
+.email2{
+	display: flex;
+}
+
+.email label{
+	    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+	
+}
+
+.email input[type="email"]{
+	  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  margin-top: -10px;
+}
+
+.email-input-group input,
+.email-input-group select {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 42px;
+}
+
+.email-input-group .at-symbol {
+  font-size: 14px;
+  color: #444;
+  margin-top: 2px;
+}
+
+.gender{
+	display: flex;
+}
+
+.gender label{
+	    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+	
+}
+
+.gender input[type="text"]{
+	  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.birth2{
+	display: flex;
+}
+
+.birth label{
+	    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+	
+}
+
+.birth2 input[type="text"]{
+	  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  width: 120px;
+  margin-left: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  text-align: center;
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center; align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100px;
+}
+
+.cancel {
+  background-color: #ccc;
+}
+
+.confirm {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+

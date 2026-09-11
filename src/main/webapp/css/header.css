@@ -1,0 +1,116 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+/* 상위 네비 */
+.top-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	padding: 0 30px;
+}
+
+.menu-btn {
+	font-size: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin-left: -10px;
+	position: fixed;
+	top: 10px;
+	left: 25px;
+	z-index: 1001;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+	height: 100%;
+	width: 500px;
+	position: fixed;
+	top: 0;
+	left: -500px;
+	background-color: #B0B4C1;
+	overflow-x: hidden;
+	transition: left 0.3s ease;
+	padding-top: 60px;
+	z-index: 1000;
+	background: rgba(176, 180, 193, 0.6);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-right: 1px solid rgba(255, 255, 255, 0.2); /* 은은한 구분선 */
+}
+
+.sidebar a {
+	display: block;
+	padding: 4px 24px;
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+	cursor: pointer;
+	letter-spacing: -0.5px;
+	line-height: 1.3;
+}
+
+.sidebar a.group-gap {
+	margin-top: 25px;
+}
+
+.sidebar.open {
+	left: 0;
+}
+
+/* 오버레이: 사이드바가 열릴 때 나타남 */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent; /* 흐리게 하고 싶으면 rgba(0,0,0,0.3) */
+	z-index: 998;
+	display: none;
+}
+
+.overlay.active {
+	display: block;
+}
+
+.nav-right {
+	position: fixed;
+	top: 15px;
+	right: 30px;
+	z-index: 1001; /* 햄버거 버튼과 같은 레벨로 */
+	display: flex;
+	align-items: center;
+}
+
+.nav-right a {
+	margin-left: 30px;
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* 로고 */
+.logo-wrap {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+}
+
+.logo-wrap a {
+	display: inline-block;
+}
+
+.logo-img {
+	width: 150px;
+	height: auto;
+	display: block;
+}

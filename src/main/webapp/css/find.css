@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 0;
+}
+
+.back-btn-wrap {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.back-btn {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logo-wrap {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  width: 150px;
+}
+
+.find-id-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin-top: 80px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  margin: 16px 0 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.phone-input-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 16px; /* ✅ 인증 버튼과 간격 추가 */
+}
+
+.phone-input-group input[type="text"],
+.phone-input-group input[type="email"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.phone-input-group span {
+  font-size: 14px;
+}
+
+.email-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.email-input-group input {
+  width: 190px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7fbff;
+  box-sizing: border-box;
+}
+
+.email-input-group select {
+  width: 183px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
+  appearance: none; /* 브라우저 기본 화살표 제거 */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.email-input-group .at-symbol {
+  font-size: 14px;
+  color: #333;
+}
+
+
+#authBtnBox {
+  margin-bottom: 10px;
+}
+
+.verify-btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* 입력창 placeholder 기본 스타일 */
+input::placeholder {
+  color: #aaa;
+  transition: opacity 0.2s ease;
+}
+
+/* 포커스되면 placeholder 투명하게 */
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn.black {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn.white {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin: 40px 0 10px;
+}

@@ -1,0 +1,144 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+/* 하위 네비 */
+.sub-nav ul {
+	display: flex;
+	justify-content: center;
+	gap: 40px; /* 항목 간 간격 */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sub-nav ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+	font-family: 'Malgun Gothic', sans-serif;
+	font-weight: bold;
+}
+
+.sub-nav ul li a:hover {
+	color: #015FC1;
+}
+
+.sub-nav ul li a.active {
+	color: #015FC1; /* 호버와 동일한 색상 */
+}
+
+/* 상품 목록 */
+.product-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 핵심 */
+	gap: 60px 10px;
+	max-width: 1800px;
+	margin: 80px auto;
+	padding: 0 20px;
+	justify-items: center;
+}
+
+.product-card {
+	text-align: center;
+	font-family: 'Malgun Gothic', sans-serif;
+	width: 100%;
+}
+
+.product-card img {
+	width: 100%; /* 유동 크기 */
+	max-width: 300px; /* 최대값 제한 */
+	height: auto;
+}
+
+.product-name {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 10px 0 6px;
+	color: #000;
+	letter-spacing: 0.5px;
+}
+
+.product-price {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+}
+
+/* VIEW MORE 버튼 */
+.load-more-wrap {
+	text-align: center;
+	margin: 40px 0;
+}
+
+.load-more {
+	padding: 6px 14px;
+	border: 1px solid #333;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.detail-panel {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+	padding: 40px;
+	z-index: 9999;
+	transition: transform 0.4s ease;
+	transform: translateX(100%);
+}
+
+.detail-panel img {
+	width: 100%;
+	max-height: 600px;
+	object-fit: contain;
+}
+
+.detail-panel .btn-group {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.detail-panel .add-to-bag, .detail-panel .buy-now {
+	flex: 1;
+	padding: 12px;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.detail-panel .add-to-bag {
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+.detail-panel .buy-now {
+	background-color: #000;
+	color: #fff;
+}
+
+.detail-panel .close-btn {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	font-size: 20px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.detail-panel.show {
+	transform: translateX(0);
+}
+
+.hidden {
+	display: none;
+}

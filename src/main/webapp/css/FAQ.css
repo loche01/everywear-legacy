@@ -1,0 +1,196 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+.content2 {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h3 {
+	text-align: center;
+	font-size: 20px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+}
+
+.container {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.sidebar2 {
+	position: fixed;
+	top: 50%;
+	left: 150px;
+	transform: translateY(-50%);
+	width: 180px;
+	height: auto; /* 고정 높이 안 줘도 괜찮으면 auto 추천 */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sidebar2 ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar2 ul li a {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.sidebar2 ul li a:hover {
+	color: #015FC1;
+	font-weight: bold;
+}
+
+.content {
+  flex: 1;
+  padding: 0 30px;
+  margin: 70px auto 0 auto;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.notice-table td.views {
+	text-align: right;
+	padding-right: 30px;
+	white-space: nowrap;
+}
+
+.notice-table td.date {
+	width: 150px;
+}
+
+.notice-table td.title {
+	width: 600px;
+}
+
+.notice-table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin: 0px auto 0 auto;
+}
+
+.notice-table tr {
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.notice-table td {
+	padding: 14px 10px;
+	font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 30px 0;
+}
+
+.invisible-button {
+  visibility: hidden;
+  display: inline-block;
+  width: 40px;   /* Prev/Next와 동일한 너비로 고정! */
+  text-align: center;
+}
+
+.pagination a,
+.pagination .invisible-button {
+	display: inline-block;
+	width: 40px;            /* ✅ 고정된 너비로 중앙 유지 */
+	text-align: center;
+	cursor: pointer;
+	font-size: 13px;
+	color: #888;
+	padding: 6px 0;         /* ✅ 양옆 패딩 제거, 높이만 확보 */
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.pagination .invisible-button {
+	visibility: hidden;
+}
+
+.pagination a:hover {
+	background-color: #f0f0f0;
+}
+
+.pagination .active {
+	font-weight: bold;
+	color: black;
+	border-color: black;
+}
+
+
+.footer-bottom {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+/* FAQ 아이템 전체는 block 배치 */
+.faq-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.faq-list {
+  min-height: 420px; /* 항목이 부족해도 기본 공간 확보 */
+}
+
+/* 질문 줄에만 flex 적용 */
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.question:hover {
+  background-color: #f5faff;  /* 살짝 푸른 배경 */
+  color: #015FC1;             /* 글자 파란색으로 */
+}
+
+/* 답변 내용 */
+.faq-content {
+  display: none;
+  padding: 20px;
+  background-color: #f0f0f0;
+  /* background-color: #f9f9f9; */
+  font-size: 14px;
+  border-top: 1px solid #ccc;
+}
+
+/* 화살표 */
+.arrow {
+  transition: transform 0.3s ease;
+}
+.faq-item.active .arrow {
+  transform: rotate(180deg);
+}

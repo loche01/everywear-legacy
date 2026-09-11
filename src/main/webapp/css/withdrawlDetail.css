@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+body {
+	font-family: '맑은 고딕', sans-serif;
+	padding: 20px;
+	background-color: #f9f9f9;
+}
+
+.container {
+	max-width: 500px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+	color: #333;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.info-list {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 20px;
+}
+
+.info-list li {
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+}
+
+.restore-form {
+	text-align: center;
+}
+
+.restore-btn {
+	padding: 10px 20px;
+	background-color: #1abc9c;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.restore-btn:hover {
+	background-color: #16a085;
+}

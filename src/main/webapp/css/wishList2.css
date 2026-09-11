@@ -1,0 +1,198 @@
+body {
+	font-family: 'Malgun Gothic', sans-serif;
+	padding-top: 120px;
+}
+
+.content2 {
+	flex: 1;
+	padding: 0 30px;
+}
+
+h3 {
+	text-align: center;
+	font-size: 20px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+}
+
+.container {
+	display: flex;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.user-box {
+	background-color: #f1f1f1;
+	border-radius: 8px;
+	padding: 12px 16px;
+	margin-bottom: 20px;
+	position: fixed;
+	top: 250px;
+	left: 150px;
+	width: 180px;
+	height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.username {
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.user-info {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	row-gap: 4px;
+	font-size: 13px;
+}
+
+.user-info .label {
+	color: #333;
+}
+
+.user-info .value {
+	font-weight: bold;
+	text-align: right;
+}
+
+.sidebar2 {
+	position: fixed;
+	top: 50%;
+	left: 150px;
+	transform: translateY(-50%);
+	width: 180px;
+	height: auto; /* 고정 높이 안 줘도 괜찮으면 auto 추천 */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sidebar2 ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar2 ul li a {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+	font-family: 'Malgun Gothic', sans-serif;
+}
+
+.sidebar2 ul li a:hover {
+	color: #015FC1;
+	font-weight: bold;
+}
+
+.content {
+	flex: 1;
+	padding: 0 30px;
+}
+
+.wishlist-content {
+  max-width: 750px;
+  margin: 40px auto 0 auto;
+}
+
+/* 제목 + 경계선 */
+.wishlist-title-wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.wishlist-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #888;
+  display: inline-block;
+  width: 90%;
+}
+
+/* 본문 항목 */
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #ccc;
+}
+
+.wishlist-item.soldout {
+  background-color: #ddd;
+  opacity: 0.8;
+}
+
+.wishlist-item.soldout .wishlist-name,
+.wishlist-item.soldout .wishlist-price {
+  color: #888; /* 회색으로 변경 */
+  text-decoration: line-through; /* 취소선 추가 */
+}
+
+.wishlist-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.wishlist-info {
+  flex: 1;
+}
+
+.wishlist-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.wishlist-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.wishlist-heart {
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.wishlist-heart:hover {
+  transform: scale(1.1);
+  color: #015FC1;
+}
+
+.wishlist-heart-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wishlist-cart {
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.wishlist-cart:hover {
+  transform: scale(1.1);
+  color: #015FC1;
+}
+
+.wishlist-heart.soldout {
+  color: black;
+}

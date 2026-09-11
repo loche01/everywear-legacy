@@ -1,0 +1,140 @@
+@charset "UTF-8";
+/* resetPassword.css */
+
+body {
+  font-family: 'Malgun Gothic', sans-serif;
+  background-color: #fff;
+  margin: 0;
+}
+
+.login-container {
+  max-width: 360px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 13px;
+  margin: 8px 0 4px;
+  display: block;
+  color: #222;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f8f9fb;
+  font-size: 13px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+input[readonly] {
+  background-color: #f8f8f8;
+  color: #333;
+  cursor: not-allowed;
+}
+
+.readonly-input {
+  background-color: #f5f7fa;
+  color: #000; /* 검정색 텍스트 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  padding-left: 2px;
+  text-align: left;   /* 왼쪽 정렬 */
+}
+
+/* 로그인 버튼 (공통 스타일) */
+.login-btn {
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  padding: 12px 0;
+  margin-top: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none; /* ✅ 링크 밑줄 제거 */
+}
+
+.btn.black {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn.white {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.match {
+  color: green;
+}
+
+.not-match {
+  color: red;
+}
+
+#pwCheck{
+font-size: 13px;
+  text-align: left;
+}
+
+#pwCheckMsg{
+font-size: 13px;
+  text-align: left;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  padding: 20px 0;
+}
