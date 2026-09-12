@@ -1,6 +1,6 @@
 # Legacy 복구 현황
 
-복구 기준: `36a9cb2`의 소스 스냅샷. 이 공개용 저장소는 복구 저장소와 분리된 새 Git history로 시작한다.
+복구 기준: `36a9cb2`의 소스 스냅샷. 공개 root commit `af336ab` 생성 완료. 이 문서의 `36a9cb2` 및 PHASE별 과거 commit은 복구 기준 저장소의 이력이며, 현재 공개 저장소의 Git history에 포함되지 않는다.
 
 ## 완료
 
@@ -45,8 +45,7 @@ Naver 실제 OAuth 로그인은 외부 Naver 애플리케이션과 callback 설�
 
 ## 미완료
 
-1. 공개용 스냅샷 최종 검토 및 첫 커밋
-2. README 및 데이터 출처·라이선스 고지 작성
-3. GitHub 공개 및 Legacy 포트폴리오 마감
+1. README 및 데이터 출처·라이선스 고지 작성
+2. GitHub 공개 및 Legacy 포트폴리오 마감
 
 Park/V3 신규 기능 병합은 종료했다. Spring Boot 현대화는 위 Legacy 마감 후 별도 단계다.

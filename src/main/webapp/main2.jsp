@@ -38,20 +38,20 @@
 			<!-- Swiper 슬라이드 시작 -->
 			<div class="swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" onclick="goToDetail('458')">
-						<img src="images/main-cloth2.png" alt="WL VARSITY JACKET">
+					<div class="swiper-slide" onclick="goToDetail('10')">
+						<img src="images/product-placeholder.svg" alt="DEMO LIGHT JACKET - NAVY">
 					</div>
-					<div class="swiper-slide" onclick="goToDetail('351')">
-						<img src="images/main-cloth3.png" alt="WL VARSITY JACKET 2">
+					<div class="swiper-slide" onclick="goToDetail('11')">
+						<img src="images/product-placeholder.svg" alt="DEMO TRUCKER JACKET - INDIGO">
 					</div>
-					<div class="swiper-slide" onclick="goToDetail('393')">
-						<img src="images/main-cloth1.png" alt="WL VARSITY JACKET 3">
+					<div class="swiper-slide" onclick="goToDetail('12')">
+						<img src="images/product-placeholder.svg" alt="DEMO PUFFER PARKA - BLACK">
 					</div>
-					<div class="swiper-slide" onclick="goToDetail('367')">
-						<img src="images/main-cloth4.png" alt="WL VARSITY JACKET">
+					<div class="swiper-slide" onclick="goToDetail('13')">
+						<img src="images/product-placeholder.svg" alt="DEMO WINDBREAKER - OLIVE">
 					</div>
-					<div class="swiper-slide" onclick="goToDetail('343')">
-						<img src="images/main-cloth5.png" alt="WL VARSITY JACKET">
+					<div class="swiper-slide" onclick="goToDetail('8')">
+						<img src="images/product-placeholder.svg" alt="DEMO WOOL KNIT - GREEN">
 					</div>
 				</div>
 
