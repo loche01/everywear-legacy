@@ -29,24 +29,8 @@ UserAddrDTO addr = crm.getAddr();
       <td>
     <%
       String type = user.getUser_type();
-      String logoPath = "";
-
-      switch (type) {
-        case "Google":
-          logoPath = "images/Google.png";
-          break;
-        case "Kakao":
-          logoPath = "images/kakao.png";
-          break;
-        case "Naver":
-          logoPath = "images/Naver.png";
-          break;
-        default:
-          logoPath = "images/fav-icon.png";
-      }
     %>
-    <img src="<%=request.getContextPath()%>/<%=logoPath%>" alt="<%=type%>" style="height: 24px; vertical-align: middle;">
-    <span style="margin-left: 8px;"><%=type%></span>
+    <span style="display:inline-block; padding:2px 8px; border-radius:4px; background:#eee; font-size:12px; font-weight:600; color:#555;"><%=type%></span>
   </td>
   </tr>
   <tr>

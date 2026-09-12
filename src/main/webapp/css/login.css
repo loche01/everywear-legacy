@@ -192,6 +192,25 @@ input:focus::placeholder {
   margin-right: 12px;
 }
 
+/* Kakao's official login button already bundles its own icon+label+background,
+   so the generic social-login container chrome and icon sizing are reset here. */
+.social-login a.kakao {
+  padding: 0;
+  background: none;
+}
+
+.social-login a.kakao img {
+  width: 100%;
+  height: auto;
+  margin-right: 0;
+  border-radius: 10px;
+}
+
+/* No official Naver asset is bundled (see THIRD_PARTY_NOTICES.md); text-only button. */
+.social-login a.naver {
+  padding-left: 24px;
+}
+
 .guest-order {
   display: block;
   margin: 10px 0;

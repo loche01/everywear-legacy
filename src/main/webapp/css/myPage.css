@@ -134,6 +134,14 @@ h2 {
   margin-right: 10px;
 }
 
+.input-provider-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
 .id-box input[type="text"] {
   border: none;
   padding: 0;

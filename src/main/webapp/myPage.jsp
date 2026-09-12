@@ -125,7 +125,7 @@
 					<div class="form-group">
 						<label>ID <span style="color: red;">*</span></label>
 						<div class="id-box">
-						  	<img src="images/kakao.png" alt="아이콘" class="input-icon">
+							<span class="input-provider-label">Kakao</span>
 							<input type="text" name="name" id="name" value="<%=userId%>" readonly>
 						</div>
 					</div>
@@ -135,7 +135,7 @@
 					<div class="form-group">
 						<label>ID <span style="color: red;">*</span></label>
 						<div class="id-box">
-						  	<img src="images/Google.png" alt="아이콘" class="input-icon">
+							<span class="input-provider-label">Google</span>
 							<input type="text" name="name" id="name" value="<%=userId%>" readonly>
 						</div>
 					</div>

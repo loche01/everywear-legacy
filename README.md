@@ -48,7 +48,7 @@ Java/JSP 기반 의류 쇼핑몰 팀 프로젝트를 프로젝트 종료 후 개
 | 서버 | Java 21, JSP, Servlet 4.0, JDBC |
 | DB / 실행환경 | MySQL 8, Apache Tomcat 9 |
 | 화면 | HTML, CSS, JavaScript |
-| 포함 라이브러리 | MySQL Connector/J 8.0.32, JSTL 1.2 등 |
+| 포함 라이브러리 | JSTL 1.2 등(`WEB-INF/lib`에 포함). MySQL Connector/J 8.0.32는 별도 준비 필요 — [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 및 아래 실행 방법 참고 |
 
 Eclipse Dynamic Web Project 구조이며 Maven/Gradle 빌드 프로젝트가 아닙니다. 라이브러리는 `src/main/webapp/WEB-INF/lib`에 포함되어 있습니다.
 
@@ -75,7 +75,18 @@ JDK 21, Tomcat 9, MySQL 8을 준비합니다. 신규 설치는 독립 MySQL 8.0.
 
 Eclipse의 **Existing Projects into Workspace**로 프로젝트를 가져오고 JDK 21과 Tomcat 9 runtime을 지정합니다. 저장소의 배포 설정은 `src/main/webapp`을 웹 루트로, Java 컴파일 결과를 `WEB-INF/classes`로 배포하며 context root는 `JSPTP`입니다.
 
-### 2. DB 초기화
+### 2. MySQL Connector/J 준비
+
+이 공개 저장소에는 `mysql-connector-j-8.0.32.jar`를 포함하지 않습니다. 실제 credential과 마찬가지로 이 바이너리도 저장소에 커밋하지 않는 방식을 택했습니다(사유는 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 참고).
+
+로컬 실행 전, 아래 중 한 곳에서 **정확히 8.0.32 버전**을 받아 `src/main/webapp/WEB-INF/lib/`에 추가하세요.
+
+- 공식 배포: https://dev.mysql.com/downloads/connector/j/ (버전 8.0.32 선택)
+- Maven Central: `com.mysql:mysql-connector-j:8.0.32`
+
+`.gitignore`에 `src/main/webapp/WEB-INF/lib/mysql-connector-j-*.jar` 패턴이 등록되어 있어, 추가한 파일이 실수로 다시 커밋되지 않습니다.
+
+### 3. DB 초기화
 
 저장소 루트에서 신규 MySQL에 관리자 계정으로 접속한 뒤, **같은 MySQL 세션에서** 다음 순서대로 실행합니다. 접속 host·port가 기존 데이터베이스를 가리키지 않는지 먼저 확인하세요.
 
@@ -97,7 +108,7 @@ SOURCE db/demo_product_sample.sql;
 - `db/legacy-original/`은 참고 자료이며 초기화에 사용하지 않습니다. 실제 복구 baseline의 비공개 원본 데이터는 필요하지 않습니다.
 - [Demo seed](db/demo_product_sample.sql)는 합성 상품 24개·옵션 65개·placeholder 이미지 24개를 넣습니다. 초기 테이블은 20개입니다. 상품 관련 3개 테이블과 사용자 1행을 제외한 나머지 16개 테이블은 비어 있습니다.
 
-### 3. DB 계정과 환경변수
+### 4. DB 계정과 환경변수
 
 설치 후 전용 앱 DB 계정을 만들고 해당 schema에만 `SELECT, INSERT, UPDATE, DELETE` 권한을 부여합니다. 앱 실행에 관리자 계정이나 DDL 권한은 필요하지 않습니다.
 
@@ -114,7 +125,7 @@ SOURCE db/demo_product_sample.sql;
 
 기본 Demo 체험에는 OAuth·SMS·Gmail·PG credential을 설정하지 않습니다. 회원가입·아이디 찾기·전화번호 변경·비밀번호 복구 등 외부 발송이 필요한 흐름은 이 설정만으로 완료할 수 없습니다.
 
-### 4. 실행과 Demo 로그인
+### 5. 실행과 Demo 로그인
 
 프로젝트를 Tomcat에 추가해 빌드·배포하고 `/JSPTP/main2.jsp`에 접속합니다. Tomcat HTTP 포트가 8080이면 주소는 `http://localhost:8080/JSPTP/main2.jsp`입니다.
 
@@ -154,6 +165,10 @@ OAuth·SMS·Gmail·PG 등 외부 서비스 live E2E는 검증 범위에서 제�
 - 모든 JSP의 escaping과 DAO 예외처리를 전면 재구성한 것은 아닙니다. 파일·DB 처리 사이 비정상 종료 시 고아 파일 가능성도 남습니다.
 - 공개 상품 데이터는 원본 전체가 아닌 합성 Demo seed입니다.
 
+## 라이선스 및 권리
+
+이 저장소는 원래 팀 프로젝트였던 코드를, 프로젝트 종료 후 개인이 복구·정리하여 공개하는 Legacy Demo입니다. 프로젝트 자체(팀이 작성한 코드)에는 별도의 오픈소스 라이선스(MIT/Apache/GPL 등)를 부여하지 않습니다. 저장소에 포함된 third-party 라이브러리와 로그인 브랜드 자산은 각각 원 라이선스 및 각 사의 브랜드 가이드라인을 따르며, 자세한 내용은 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)를 참고하세요.
+
 ## 관련 문서
 
 - [문서 안내](docs/index.md)
@@ -162,6 +177,7 @@ OAuth·SMS·Gmail·PG 등 외부 서비스 live E2E는 검증 범위에서 제�
 - [계정·인증 보안](docs/auth-security.md)
 - [검증 가이드](docs/test-guide.md)
 - [알려진 문제와 보류 항목](docs/known-issues.md)
+- [Third-Party Notices](THIRD_PARTY_NOTICES.md)
 
 ## 향후 계획
 

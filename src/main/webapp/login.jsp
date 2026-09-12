@@ -135,19 +135,17 @@
   <div class="social-login">
     <a class="social-btn google" href="<%=authUrl%>" aria-disabled="<%= !googleConfigured %>"
        <%= googleConfigured ? "" : "onclick=\"return false;\" title=\"외부 Google 앱 설정 필요\"" %>>
-      <img src="images/Google.png" alt="Google">
+      <img src="images/google-signin.png" alt="Google">
       <span>Sign in with Google</span>
     </a>
     <br>
     <a class="social-btn kakao" href="<%=authUrl_k%>" aria-disabled="<%= !kakaoConfigured %>"
        <%= kakaoConfigured ? "" : "onclick=\"return false;\" title=\"외부 Kakao 앱 설정 필요\"" %>>
-      <img src="images/kakao.png" alt="Kakao">
-      <span>Sign in with Kakao</span>
+      <img src="images/kakao-login.png" alt="Login with Kakao">
     </a>
  	<br>
 		<a class="social-btn naver" href="<%= apiURL_n %>" aria-disabled="<%= !naverConfigured %>"
 		   <%= naverConfigured ? "" : "onclick=\"return false;\" title=\"외부 Naver 앱 설정 필요\"" %>>
-	  <img src="images/Naver.png" alt="Naver">
 	  <span>Sign in with Naver</span>
 	</a>
   </div>
