@@ -30,7 +30,9 @@
 
 `recovery_user` 1행은 1번 `recovery_minimal.sql`에 이미 포함되어 있으므로 별도 INSERT하거나 계정 생성 목적으로 해당 SQL을 재실행하지 않는다. 위 순서는 빈 schema에서 한 번 적용하는 기준이며, ALTER/CREATE 및 고정 PK seed의 재실행은 중복 오류나 테스트 비밀번호 덮어쓰기를 일으킬 수 있다.
 
-공개/disposable 신규 설치에는 아래 A의 private recovery 데이터가 필요하지 않다. 기존 recovery DB를 사용하지 않고 별도의 빈 schema를 준비한다. 현재 SQL의 CREATE DATABASE/USE는 `everywear_recovery`로 고정되어 있으므로, 승인된 disposable 검증에서는 저장소 밖 사본의 schema 지정문만 대상 이름으로 바꾸고 확인해야 한다. CLI의 기본 DB 지정만으로는 격리되지 않는다. 신규 설치 실제 검증은 아직 수행하지 않았다.
+공개/disposable 신규 설치에는 아래 A의 private recovery 데이터가 필요하지 않다. 기존 recovery DB를 사용하지 않고 별도의 빈 schema를 준비한다. 현재 SQL의 CREATE DATABASE/USE는 `everywear_recovery`로 고정되어 있으므로, 승인된 disposable 검증에서는 저장소 밖 사본의 schema 지정문만 대상 이름으로 바꾸고 확인해야 한다. CLI의 기본 DB 지정만으로는 격리되지 않는다.
+
+**PUBLIC FRESH INSTALL — PASS (2026-09-12):** 독립 MySQL 8.0.46에 위 공개 SQL 8개를 순차 적용해 신규 설치 실제 검증을 완료했다. `everywear_recovery` schema 20 tables, `user` 1, `product` 24, `product_detail` 65, `product_image` 24가 예상대로 생성되었다. 메인·상품 목록/NEW/BEST·Demo 상세 ID 8/10/11/12/13가 HTTP 200, 일반 로그인과 장바구니·찜·텍스트 Q&A CRUD가 PASS했다. 검증 후 임시 DB·계정·runtime을 정리했다. 이 결과는 아래 B의 공개용 demo sample 기준이며, A의 private recovery baseline과는 별개다.
 
 상품 데이터는 두 갈래로 분리한다. 아래 "A. 검증된 recovery baseline" 과 "B. 공개용 demo sample" 을 혼동하지 않는다.
 

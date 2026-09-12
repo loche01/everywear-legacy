@@ -1,10 +1,11 @@
 # Legacy 복구 현황
 
-복구 기준: `36a9cb2`의 소스 스냅샷. 공개 root commit `af336ab` 생성 완료. 이 문서의 `36a9cb2` 및 PHASE별 과거 commit은 복구 기준 저장소의 이력이며, 현재 공개 저장소의 Git history에 포함되지 않는다.
+복구 기준: `36a9cb2`의 소스 스냅샷. 공개 root commit `af336ab`과 Demo/문서 보정 commit `f503693` 생성 완료. 이 문서의 `36a9cb2` 및 PHASE별 과거 commit은 복구 기준 저장소의 이력이며, 현재 공개 저장소의 Git history에 포함되지 않는다.
 
 ## 완료
 
 - **FINAL INTEGRATED REGRESSION 완료 — PASS WITH LIMITATIONS. Legacy 기능/보안 검증 종료.**
+- **PUBLIC FRESH INSTALL 완료 — PASS.** 독립 MySQL 8.0.46에 공개 SQL 8개를 순차 적용해 신규 설치·로그인·장바구니·찜·텍스트 Q&A CRUD를 검증했다. 세부 결과는 [DB 복구와 데이터 구분](db-recovery.md) 참고.
 - C-1/H-1/H-2 consolidated fixture E2E PASS. cleanup 후 20/20 table count와 PK 정렬 SHA-256 digest가 실행 직전 baseline과 완전 일치. marker 잔존 0, 기존 데이터 불변.
 - 상품 상세 입력 검증 및 장바구니 stale 세션 보호를 복구 기준에 포함했다.
 - 공개본에서는 권리 근거가 없는 메인 영상을 제외하고 자체 placeholder로 대체했다. 미사용 Windows 절대경로와 구형 리뷰 삭제 오버로드를 제거했다.
@@ -36,7 +37,7 @@
   - `sendMSG.jsp`: `PhoneSMS.sendMSG` 호출 제거(실제 SMS 미발송), `{"result":"demo","sent":false}` 반환. `PhoneSMS.java`·회원가입/인증 SMS 경로는 무변경
   - `pay.jsp`: 주문서 상단에 "DEMO STORE — 실제 결제·주문·배송 없음" 배너 추가(계산 UI 구조는 유지)
   - 실제 PortOne 서버 검증 API 및 PG refund 연동은 구현하지 않았다. 관리자 refund workflow 는 여전히 DB 상태관리이며 실제 PG cancellation 이 아니다
-- PHASE 7 공개 전 정리 (진행 중)
+- PHASE 7 공개 전 정리 완료
   - PHASE 7A: 미사용 테스트/trash JSP·전용 CSS, dev SQL, 개인 handle 포함 legacy seed, 관리자 계정 열람 디버그 endpoint(`AdminCheckServlet`), 고아 테스트 업로드 제거 (`4d8ccdc`)
   - PHASE 7B: Google/Kakao OAuth redirect URI 및 개인 DDNS 하드코딩 제거 → 환경변수 외부화, 미설정 시 안전 비활성화 (`ff858d9`)
   - PHASE 7C: 제3자 스크래핑 상품/이미지 데이터(`src/main/java/Product.sql`, 실제 브랜드명·가격·외부 CDN 이미지 URL) 저장소에서 제거. 공개용 완전 합성 demo dataset `db/demo_product_sample.sql`(상품 24개, 자체 placeholder 이미지) 추가. **라이브 recovery DB(:3307) 및 검증된 baseline(product 1518 / product_detail 3513 / product_image 7410, phase4 digest)은 변경하지 않았다** — demo sample 은 from-scratch 데모용이며 baseline 을 대체하지 않는다
@@ -45,7 +46,7 @@ Naver 실제 OAuth 로그인은 외부 Naver 애플리케이션과 callback 설�
 
 ## 미완료
 
-1. README 및 데이터 출처·라이선스 고지 작성
+1. README 최종 검토 및 데이터 출처·라이선스 고지 작성
 2. GitHub 공개 및 Legacy 포트폴리오 마감
 
 Park/V3 신규 기능 병합은 종료했다. Spring Boot 현대화는 위 Legacy 마감 후 별도 단계다.
