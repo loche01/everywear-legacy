@@ -143,9 +143,9 @@ Vector<ProductDTO> plist = new Vector<ProductDTO>();
 					<div class="inner-panel right-panel" style="display: none;"
 						id="abc">
 						
-						<img src="images/main-cloth1.png"> <img
-							src="images/main-cloth1.png"> <img
-							src="images/main-cloth1.png">
+						<img src="images/product-placeholder.svg"> <img
+							src="images/product-placeholder.svg"> <img
+							src="images/product-placeholder.svg">
 					</div>
 				</div>
 			</div>

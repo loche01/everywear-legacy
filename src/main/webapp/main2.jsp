@@ -102,56 +102,56 @@
 		<div class="slider-wrapper">
 			<div class="slider-track">
 				<div class="slide">
-					<img src="images/bald2.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/bald.png" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac1.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac2.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac3.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac4.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac5.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac6.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>2025 SS</strong><br> <strong>STORY BEHIND</strong><br>
 						THE IMAGES(NOW BASED IN BUENOS AIRES)
@@ -167,56 +167,56 @@
 		<div class="slider-wrapper">
 			<div class="slider-track">
 				<div class="slide">
-					<img src="images/mainac10.png" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>JSP B TEAM LOGO</strong><br> <strong>MADE BY
 							ECLIPSE..</strong><br> LOGO CODING!
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac8.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>2018SS "NMxAE."</strong><br> <strong>ARCHIVING
 							PIC</strong><br> WE JUST GET SUNGLASS!
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac11.png" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>FUCKYAAA</strong><br> <strong>WORK EASY,
 							SLEEP HARD.</strong><br> d u wAnnA Us stIckEr?
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac7.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>2020SS “THE NORTH WIND AND THE SUN.”</strong><br> <strong>SSUNWIND
 							DUO!!!</strong><br> ARE THEY HUMAN?
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/tk.jpg" alt="look1">
+					<img src="images/product-placeholder.svg" alt="look1">
 					<div class="slide-text">
 						<strong>???</strong><br> <strong>BAG? HOODIE?</strong><br>
 						WHATS IN MA "BACK"
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac5.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>zzZ</strong><br> <strong>NG CUT ㅋㅋ</strong><br>
 						현대인들이여 KEEP SLEEPING~
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/mainac2.jpg" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>idk</strong><br> <strong>IDK!!!!!!</strong><br>
 						look my head. FUCKIN REEEEEEEEEDDDD
 					</div>
 				</div>
 				<div class="slide">
-					<img src="images/bald.png" alt="look2">
+					<img src="images/product-placeholder.svg" alt="look2">
 					<div class="slide-text">
 						<strong>MAYBE JDJ..?</strong><br> <strong>JDJ!?????!?!!?</strong><br>
 						runner DJ @@
@@ -330,7 +330,7 @@
 	<!-- 메인 하단 이미지 영역 -->
 	<div class="bottom-image-section">
 		<img src="images/logo-black.png" alt="로고 이미지" class="background-logo">
-		<img src="images/main-model.png" alt="모델 이미지" class="main-model">
+		<img src="images/product-placeholder.svg" alt="Demo image" class="main-model">
 	</div>
 
 	<%@ include file="includes/footer.jsp"%>
