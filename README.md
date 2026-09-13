@@ -90,6 +90,8 @@ Eclipse의 **Existing Projects into Workspace**로 프로젝트를 가져오고 
 
 저장소 루트에서 신규 MySQL에 관리자 계정으로 접속한 뒤, **같은 MySQL 세션에서** 다음 순서대로 실행합니다. 접속 host·port가 기존 데이터베이스를 가리키지 않는지 먼저 확인하세요.
 
+접속 시 `mysql --default-character-set=utf8mb4 -h <DB_HOST> -P <DB_PORT> -u <ADMIN_USER> -p`처럼 client charset을 명시적으로 `utf8mb4`로 지정합니다. client가 `latin1`로 동작하면 `복구사용자` 등의 한글 literal 적용이 실패할 수 있습니다.
+
 ```sql
 SOURCE db/recovery_minimal.sql;
 SOURCE db/recovery_cart_schema.sql;

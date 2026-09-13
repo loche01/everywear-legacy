@@ -11,13 +11,18 @@
 ### activation.jar
 
 - **Component:** JavaBeans Activation Framework (JAF)
-- **Version:** 1.1.x 계열로 추정됨 — jar manifest에 버전 문자열이 없어 exact version not identified. 클래스 빌드 타임스탬프(2009-09-27)가 공식 1.1.1 릴리스일(2009-10-23)보다 앞서 있어, 정식 1.1.1 배포본과 동일하다고 단정하지 않음.
-- **Upstream:** Oracle / Sun Microsystems
-- **License:** CDDL 1.0 (JAF 1.1.x 계열 공식 라이선스)
-- **Usage in everyWEAR:** `src/main/java/DAO/GmailSend.java` — `mail.jar`(JavaMail)의 필수 동반 의존성
-- **Redistribution notes:** CDDL 1.0은 소스 배포 시에만 소스 공개 의무가 발생하며, object code(바이너리) 재배포는 라이선스 사본 동봉만 요구함
-- **Required notice:** 라이선스 사본 포함
-- **License source:** [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt) — jar 자체에는 라이선스 텍스트가 동봉되어 있지 않아 별도 보관
+- **Version:** 1.1.1
+- **Artifact:** `javax.activation:activation:1.1.1`
+- **Upstream:** Sun Microsystems / Oracle
+- **License:** CDDL 1.0 — 공식 POM에 명시. 공식 JAR의 `META-INF/LICENSE.txt` 및 source header는 GPLv2 + Classpath Exception 선택지도 제공함. 이 저장소의 배포 안내는 CDDL 1.0 기준
+- **Binary:** [Maven Central 공식 binary](https://repo.maven.apache.org/maven2/javax/activation/activation/1.1.1/activation-1.1.1.jar) — 현재 저장소의 `activation.jar`와 byte-for-byte exact match (69,409 bytes)
+- **SHA-256 (공식 binary 및 repo):** `ae475120e9fcd99b4b00b38329bd61cdc5eb754eee03fe66c01f50e137724f99`
+- **Source:** `javax.activation:activation:1.1.1:sources` — [Maven Central 공식 source JAR](https://repo.maven.apache.org/maven2/javax/activation/activation/1.1.1/activation-1.1.1-sources.jar). 해당 링크에서 다운로드할 수 있으며, source JAR 자체는 이 저장소에 포함하지 않음
+- **Metadata:** [공식 POM](https://repo.maven.apache.org/maven2/javax/activation/activation/1.1.1/activation-1.1.1.pom), binary JAR의 `META-INF/MANIFEST.MF` 및 라이선스 고지
+- **Usage in everyWEAR:** `src/main/java/DAO/GmailSend.java` — JavaMail의 필수 동반 의존성
+- **Redistribution notes:** 아래 CDDL 1.0 Section 3.1 및 소스 입수 안내 참고
+- **Required notice:** JAR 내부의 원 저작권·라이선스 고지를 그대로 유지하고, 소스 입수 방법 및 CDDL 사본을 함께 안내
+- **License source:** JAR 내부 `META-INF/LICENSE.txt` 및 [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt) — 별도 파일은 순수 CDDL 1.0 전문이며, JAR 내부의 제품별 추가 고지는 그대로 보존
 
 ### cos.jar
 
@@ -74,23 +79,33 @@
 
 - **Component:** JavaServer Pages Standard Tag Library (JSTL) Reference Implementation
 - **Version:** 1.2
+- **Artifact:** `javax.servlet:jstl:1.2`
 - **Upstream:** Sun Microsystems / Oracle
-- **License:** CDDL 1.0
+- **License:** CDDL 1.0 — 공식 JAR의 `META-INF/LICENSE.txt` 및 source header에서 확인
+- **Binary:** [Maven Central 공식 binary](https://repo.maven.apache.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar) — 현재 저장소의 `jstl-1.2.jar`와 byte-for-byte exact match (414,240 bytes)
+- **SHA-256 (공식 binary 및 repo):** `c6273119354a41522877e663582041012b22f8204fe72bba337ed84c7e649b0a`
+- **Source:** `javax.servlet:jstl:1.2:sources` — [Maven Central 공식 source JAR](https://repo.maven.apache.org/maven2/javax/servlet/jstl/1.2/jstl-1.2-sources.jar). 해당 링크에서 다운로드할 수 있으며, source JAR 자체는 이 저장소에 포함하지 않음
+- **Metadata:** [공식 POM](https://repo.maven.apache.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.pom), binary JAR의 `META-INF/MANIFEST.MF` 및 라이선스 고지
 - **Usage in everyWEAR:** JSP core taglib(`<%@ taglib %>`)
-- **Redistribution notes:** 표준 CDDL 1.0 조건
-- **Required notice:** jar 내부 `META-INF/LICENSE.txt`에 이미 동봉되어 있어 별도 조치 불필요
-- **License source:** jar 내부 `META-INF/LICENSE.txt`(공식 원문과 동일 — [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt) 참고 가능)
+- **Redistribution notes:** 아래 CDDL 1.0 Section 3.1 및 소스 입수 안내 참고
+- **Required notice:** JAR 내부의 원 저작권·라이선스 고지를 그대로 유지하고, 소스 입수 방법 및 CDDL 사본을 함께 안내
+- **License source:** JAR 내부 `META-INF/LICENSE.txt` 및 [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt) — 별도 파일은 순수 CDDL 1.0 전문이며, JAR 내부의 제품별 추가 고지는 그대로 보존
 
 ### mail.jar
 
 - **Component:** JavaMail API
 - **Version:** 1.4.6
+- **Artifact:** `com.sun.mail:javax.mail:1.4.6`
 - **Upstream:** Oracle
-- **License:** CDDL 1.0 (GPLv2 + Classpath Exception 선택 가능, 이중 라이선스)
+- **License:** CDDL 1.0 또는 GPLv2 + Classpath Exception — 공식 JAR의 `META-INF/LICENSE.txt`, POM/source header에서 확인. 이 저장소의 배포 안내는 CDDL 1.0 기준
+- **Binary:** [Maven Central 공식 binary](https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.4.6/javax.mail-1.4.6.jar) — 현재 저장소의 `mail.jar`와 byte-for-byte exact match (521,054 bytes)
+- **SHA-256 (공식 binary 및 repo):** `3d6d6f401c8e7370d99fca4aba2509df5435f8ae8e20504018704fae70ef34ed`
+- **Source:** `com.sun.mail:javax.mail:1.4.6:sources` — [Maven Central 공식 source JAR](https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.4.6/javax.mail-1.4.6-sources.jar). 해당 링크에서 다운로드할 수 있으며, source JAR 자체는 이 저장소에 포함하지 않음
+- **Metadata:** [공식 POM](https://repo.maven.apache.org/maven2/com/sun/mail/javax.mail/1.4.6/javax.mail-1.4.6.pom), binary JAR의 `META-INF/MANIFEST.MF` 및 라이선스 고지
 - **Usage in everyWEAR:** `src/main/java/DAO/GmailSend.java`
-- **Redistribution notes:** 표준 CDDL 1.0 조건
-- **Required notice:** jar 내부 `META-INF/LICENSE.txt`에 이미 동봉되어 있어 별도 조치 불필요
-- **License source:** jar 내부 `META-INF/LICENSE.txt`(= [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt), 이 파일에서 그대로 가져옴 — GPLv2 Classpath Exception 대안 조항도 함께 포함되어 있음)
+- **Redistribution notes:** 아래 CDDL 1.0 Section 3.1 및 소스 입수 안내 참고
+- **Required notice:** JAR 내부의 원 저작권·라이선스 고지를 그대로 유지하고, 소스 입수 방법 및 CDDL 사본을 함께 안내
+- **License source:** JAR 내부 `META-INF/LICENSE.txt` 및 [licenses/CDDL-1.0.txt](licenses/CDDL-1.0.txt) — 별도 파일은 순수 CDDL 1.0 전문이며, JAR 내부의 제품별 추가 고지는 그대로 보존
 
 ### standard-1.1.2.jar
 
@@ -102,6 +117,14 @@
 - **Redistribution notes:** 표준 Apache-2.0 조건으로 추정
 - **Required notice:** 라이선스 사본 포함 권장
 - **License source:** [licenses/APACHE-2.0.txt](licenses/APACHE-2.0.txt)
+
+### CDDL 1.0 Section 3.1 및 소스 입수 안내
+
+[Oracle의 공식 CDDL 1.0 원문](https://oss.oracle.com/licenses/CDDL) Section 3.1에 따르면, Covered Software를 Executable 형태로 배포하거나 제공할 때는 이에 대응하는 Source Code도 이용 가능해야 합니다. 해당 Source Code는 CDDL 조건으로 배포하고 그 사본마다 라이선스 사본을 포함해야 하며, 수령인에게 통상적인 소프트웨어 교환 매체를 통해 합리적인 방법으로 소스를 얻는 방법을 알려야 합니다. 바이너리 배포가 라이선스 사본 동봉만으로 충분하다는 의미가 아닙니다.
+
+위 Activation, JavaMail, JSTL 항목의 공식 source JAR 링크는 각 배포 버전에 대응하는 소스 입수 위치입니다. 각 source JAR의 다운로드 가능 여부와 Java source header를 확인했습니다. Activation과 JSTL source JAR에는 독립된 LICENSE 파일이 없으므로, 소스를 재배포할 때는 기존 고지를 유지하고 [CDDL 1.0 사본](licenses/CDDL-1.0.txt)을 함께 제공해야 합니다. JavaMail source JAR에는 제품별 라이선스 파일이 포함되어 있습니다.
+
+이 문서는 확인한 artifact와 소스 제공 방법을 기록한 것이며, 라이선스 준수에 대한 법적 보증이나 확정 판단은 아닙니다.
 
 ---
 
@@ -139,7 +162,7 @@
 | 파일 | 대상 컴포넌트 |
 |---|---|
 | `licenses/APACHE-2.0.txt` | javaSDK-2.2.jar, json-simple-1.1.1.jar, standard-1.1.2.jar |
-| `licenses/CDDL-1.0.txt` | activation.jar (jstl-1.2.jar/mail.jar는 jar 내부에 이미 동일 원문 동봉) |
+| `licenses/CDDL-1.0.txt` | activation.jar, mail.jar, jstl-1.2.jar — [Oracle 공식 CDDL 1.0 전문](https://oss.oracle.com/licenses/CDDL), 행 끝 공백만 정리. JAR 내부 제품별 라이선스 고지는 별도로 유지 |
 | `licenses/cos-license.txt` | cos.jar (servlets.com 공식 원문 전체) |
 
 `json-20250107.jar`(Public Domain)은 고지문이 짧아 이 문서 본문에 출처 링크만 남기고 별도 파일을 두지 않았습니다.

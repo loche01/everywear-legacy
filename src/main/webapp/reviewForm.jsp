@@ -30,7 +30,7 @@
   <tr>
     <td class="pdInfo">
       <div class="product-box">
-        <img src="images/review-cloth1.png" alt="NM COTTON SHIRT" class="product-img">
+        <img src="images/product-placeholder.svg" alt="NM COTTON SHIRT" class="product-img">
         <div class="product-info">
           <strong>AETHER NYLON JACKET</strong><br>
           COLOR: SKY BLUE

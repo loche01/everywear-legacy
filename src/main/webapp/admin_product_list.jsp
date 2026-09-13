@@ -289,7 +289,7 @@
                 for (ProductDTO product : productList) {
                     String imageUrl = productDAO.getProductMainImage(product.getP_id());
                     if (imageUrl == null || imageUrl.isEmpty()) {
-                        imageUrl = "images/no_image.png";
+                        imageUrl = "images/product-placeholder.svg";
                     }
                     List<ProductDetailDTO> details = productDAO.getProductDetails(product.getP_id());
             %>
