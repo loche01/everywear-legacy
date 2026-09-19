@@ -13,6 +13,10 @@ String[] birthParts = user.getUser_birth() != null ? user.getUser_birth().split(
 String birthY = birthParts.length > 0 ? birthParts[0] : "";
 String birthM = birthParts.length > 1 ? birthParts[1] : "";
 String birthD = birthParts.length > 2 ? birthParts[2] : "";
+
+String[] phoneParts = user.getUser_phone() != null ? user.getUser_phone().split("-") : new String[] { "", "", "" };
+String phoneMid = phoneParts.length > 1 ? phoneParts[1] : "";
+String phoneLast = phoneParts.length > 2 ? phoneParts[2] : "";
 %>
 <div class = "crm-section">
   <h2>👤 회원 정보 수정</h2>
@@ -81,8 +85,8 @@ String birthD = birthParts.length > 2 ? birthParts[2] : "";
     <th style="text-align: center; vertical-align: middle;">마케팅<br>수신 동의</th>
     <td>
       <select name="user_marketing_state">
-        <option value="N" <%=user.getUser_marketing_state().equals("N") ? "selected" : ""%>>N</option>
-        <option value="Y" <%=user.getUser_marketing_state().equals("Y") ? "selected" : ""%>>Y</option>
+        <option value="N" <%="N".equals(user.getUser_marketing_state()) ? "selected" : ""%>>N</option>
+        <option value="Y" <%="Y".equals(user.getUser_marketing_state()) ? "selected" : ""%>>Y</option>
       </select>
     </td>
   </tr>
@@ -91,8 +95,8 @@ String birthD = birthParts.length > 2 ? birthParts[2] : "";
     <th style="text-align: center; vertical-align: middle;">전화번호</th>
     <td style="text-align: center; vertical-align: middle;">
       010 -
-      <input type="text" name="phone1" maxlength="4" value="<%=user.getUser_phone().split("-")[1]%>" style="width: 60px;"> -
-      <input type="text" name="phone2" maxlength="4" value="<%=user.getUser_phone().split("-")[2]%>" style="width: 60px;">
+      <input type="text" name="phone1" maxlength="4" value="<%=phoneMid%>" style="width: 60px;"> -
+      <input type="text" name="phone2" maxlength="4" value="<%=phoneLast%>" style="width: 60px;">
     </td>
     <th style="text-align: center;">신체정보</th>
     <td style="text-align: left; vertical-align: middle;">

@@ -25,6 +25,8 @@ public class GmailSend {
 		properties.setProperty("mail.smtp.auth", "true");
 		properties.setProperty("mail.smtp.starttls.enable", "true");
 		properties.setProperty("mail.smtp.starttls.required", "true");
+		// JavaMail 1.4.6 기본값(TLSv1)은 Java 21에서 비활성화되어 STARTTLS 핸드셰이크가 실패한다.
+		properties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
 		properties.setProperty("mail.smtp.connectiontimeout", "10000");
 		properties.setProperty("mail.smtp.timeout", "10000");
 		Session mailSession = Session.getInstance(properties, new SMTPAuthenticator());

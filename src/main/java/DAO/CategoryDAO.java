@@ -34,9 +34,13 @@ public class CategoryDAO {
     }
     
     // 최상위 카테고리 가져오기 (top_category가 NULL인 카테고리)
+    // 원본 seed에는 최상위 행이 없으므로, 다른 행의 상위로만 쓰이는 top_category 값도 최상위로 본다.
     public List<String> getTopCategories() {
         List<String> categories = new ArrayList<>();
-        String sql = "SELECT category_name FROM category WHERE top_category IS NULL ORDER BY category_name";
+        String sql = "SELECT category_name FROM category WHERE top_category IS NULL "
+                + "UNION SELECT DISTINCT top_category FROM category "
+                + "WHERE top_category IS NOT NULL AND top_category NOT IN (SELECT category_name FROM category) "
+                + "ORDER BY 1";
 
         try (Connection con = pool.getConnection();
              Statement stmt = con.createStatement();
