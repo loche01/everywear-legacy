@@ -54,8 +54,12 @@ public class GoogleLoginServlet extends HttpServlet {
             // 2. 사용자 정보 요청
             String userInfoResponse = sendGetRequest("https://www.googleapis.com/oauth2/v2/userinfo", accessToken);
             JSONObject userJson = new JSONObject(userInfoResponse);
-            String email = userJson.getString("email");
-            String name = userJson.getString("name");
+            String email = userJson.optString("email", "");
+            String name = userJson.optString("name", "");
+            if (email.isBlank()) {
+                response.sendRedirect("login.jsp?error=socialEmail");
+                return;
+            }
 
             HttpSession session = request.getSession();
             String sessionId = (String) session.getAttribute("id");
@@ -103,7 +107,7 @@ public class GoogleLoginServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("login.jsp?error=google");
         }
     }
 
