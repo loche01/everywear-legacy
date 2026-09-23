@@ -17,6 +17,7 @@ everyWEAR는 상품 탐색부터 장바구니·찜·주문까지 이어지는 �
 - **역할:** 팀장
 - **규모:** Java 소스 75개, JSP 108개, 상품 1,518개 · 사이즈 4,112건 · 이미지 7,410건
 - **GitHub:** 현재 저장소
+- **상세 포트폴리오:** [everyWEAR 프로젝트 상세 보기](https://app.notion.com/p/3e4a70546c15812a89cbe7b6a51d3e47)
 
 ---
 
@@ -271,6 +272,14 @@ everyWEAR는 상품 탐색부터 장바구니·찜·주문까지 이어지는 �
 - [알려진 문제](docs/known-issues.md)
 - [상품 데이터 크롤러](crawler/README.md)
 - [Third-Party Notices](THIRD_PARTY_NOTICES.md)
+
+---
+
+## 📔 프로젝트 상세 보기
+
+프로젝트 기능, 팀 프로젝트 당시 담당 역할, 프로젝트 종료 후 개인 복구·개선 과정과 트러블슈팅에 대한 상세 내용은 아래 포트폴리오에서 확인할 수 있습니다.
+
+👉 [everyWEAR 상세 포트폴리오](https://app.notion.com/p/3e4a70546c15812a89cbe7b6a51d3e47)
 
 ---
 
