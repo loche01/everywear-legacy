@@ -32,7 +32,7 @@
 <meta charset="UTF-8">
 <title>에브리웨어 | everyWEAR</title>
 <link rel="icon" type="image/png" href="images/fav-icon.png">
-<link rel="stylesheet" type="text/css" href="css/deliveryMn.css?v=6541">
+<link rel="stylesheet" type="text/css" href="css/deliveryMn.css?v=20260918">
 </head>
 <body>
 

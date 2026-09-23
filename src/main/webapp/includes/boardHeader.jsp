@@ -60,7 +60,6 @@
 			<a href="productList.jsp?cat=top">TOP</a>
 			<a href="productList.jsp?cat=bottom">BOTTOM</a>
 			<a href="productList.jsp?cat=acc">ACC</a>
-			<a href="#">SALE</a>
 			<a href="myPage.jsp" class="group-gap">MY PAGE</a>
 			<a href="board.jsp">BOARD</a>
 		</div>

@@ -39,7 +39,7 @@
 <meta charset="UTF-8">
 <title>에브리웨어 | everyWEAR</title>
 <link rel="icon" type="image/png" href="images/fav-icon.png">
-<link rel="stylesheet" type="text/css" href="css/myPage.css?v=5646574">
+<link rel="stylesheet" type="text/css" href="css/myPage.css?v=20260918">
 </head>
 <body>
 
@@ -125,7 +125,7 @@
 					<div class="form-group">
 						<label>ID <span style="color: red;">*</span></label>
 						<div class="id-box">
-							<span class="input-provider-label">Kakao</span>
+						  	<img src="images/kakao.png" alt="아이콘" class="input-icon">
 							<input type="text" name="name" id="name" value="<%=userId%>" readonly>
 						</div>
 					</div>
@@ -135,7 +135,7 @@
 					<div class="form-group">
 						<label>ID <span style="color: red;">*</span></label>
 						<div class="id-box">
-							<span class="input-provider-label">Google</span>
+						  	<img src="images/Google.png" alt="아이콘" class="input-icon">
 							<input type="text" name="name" id="name" value="<%=userId%>" readonly>
 						</div>
 					</div>

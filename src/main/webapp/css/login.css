@@ -192,25 +192,6 @@ input:focus::placeholder {
   margin-right: 12px;
 }
 
-/* Kakao's official login button already bundles its own icon+label+background,
-   so the generic social-login container chrome and icon sizing are reset here. */
-.social-login a.kakao {
-  padding: 0;
-  background: none;
-}
-
-.social-login a.kakao img {
-  width: 100%;
-  height: auto;
-  margin-right: 0;
-  border-radius: 10px;
-}
-
-/* No official Naver asset is bundled (see THIRD_PARTY_NOTICES.md); text-only button. */
-.social-login a.naver {
-  padding-left: 24px;
-}
-
 .guest-order {
   display: block;
   margin: 10px 0;
@@ -228,6 +209,19 @@ input:focus::placeholder {
   color: black;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* 관리자 로그인 진입 링크: 비회원 주문 조회와 같은 보조 링크 톤 */
+.admin-login-link {
+  display: block;
+  margin-top: 18px;
+  color: gray;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.admin-login-link:hover {
+  color: black;
 }
 
 /* 추가 스타일 */

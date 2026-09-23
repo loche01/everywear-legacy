@@ -2,6 +2,7 @@
 body {
 	font-family: 'Malgun Gothic', sans-serif;
 	padding-top: 120px;
+	background-color: #ffffff;
 }
 
 .content2 {
@@ -62,9 +63,11 @@ h3 {
 
 .sidebar2 {
 	position: fixed;
-	top: 50%;
+	/* myPage.css 와 동일한 원본 fixed-position 겹침 결함 보정.
+	   top:50%+translateY(-50%) 는 뷰포트 높이 약 960px 이상을 전제했다.
+	   .user-box 바로 아래 고정 위치로 보정한다. 색상/폰트/구조는 변경하지 않는다. */
+	top: 380px;
 	left: 150px;
-	transform: translateY(-50%);
 	width: 180px;
 	height: auto; /* 고정 높이 안 줘도 괜찮으면 auto 추천 */
 	display: flex;
@@ -95,6 +98,9 @@ h3 {
 .content {
 	flex: 1;
 	padding: 0 30px;
+	/* .user-box/.sidebar2 는 position:fixed 라서 flex 레이아웃에서 폭을 확보하지
+	   않는다. 고정 영역 폭(150px~330px)만큼 여백을 확보해 겹침을 막는다. */
+	margin-left: max(0px, calc(370px - (100vw - 1000px) / 2)); /* 사이드바(화면 기준 150~330px) 오른쪽까지만 비운다 */
 }
 
 .order-content {
@@ -203,9 +209,9 @@ input[type="checkbox"]:checked::after {
 
 /* 이미지 스타일 */
 .order-row img {
-	width: 60px;
-	height: 60px;
-	object-fit: cover;
+	width: 80px;
+	height: 80px;
+	object-fit: contain; /* 원본 cover(60px)는 상품이 잘려 보여 전체가 보이도록 조정 */
 	margin-right: 16px;
 }
 

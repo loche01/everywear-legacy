@@ -268,27 +268,56 @@ public class FavoriteDAO {
 		return flag;
 	}
 	
-	//찜 추가
+	//찜 추가 (같은 사용자·같은 상품 옵션은 한 번만 저장한다. 이미 찜한 상태면 새로 넣지 않고 성공으로 본다)
 	public boolean addWish(String id, String type, int pd_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = null;
+		ResultSet rs = null;
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "insert favorite values (null, ?, ?, ?, '찜', 1, now())";
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement("select 1 from favorite where user_id = ? and user_type = ? and pd_id = ? and f_type = '찜' limit 1");
 			pstmt.setString(1, id);
 			pstmt.setString(2, type);
 			pstmt.setInt(3, pd_id);
-			if(pstmt.executeUpdate() == 1)
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
 				flag = true;
-
+			} else {
+				rs.close();
+				pstmt.close();
+				pstmt = con.prepareStatement("insert favorite values (null, ?, ?, ?, '찜', 1, now())");
+				pstmt.setString(1, id);
+				pstmt.setString(2, type);
+				pstmt.setInt(3, pd_id);
+				if(pstmt.executeUpdate() == 1)
+					flag = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			pool.freeConnection(con, pstmt);
+			pool.freeConnection(con, pstmt, rs);
 		}
 		return flag;
+	}
+
+	//찜 해제 (상품 상세의 하트 토글용). 본인 찜만 지운다. 이미 해제된 상태여도 성공으로 본다.
+	public boolean removeWish(String id, String type, int pd_id) {
+		if (id == null || type == null || pd_id <= 0) return false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = pool.getConnection();
+			pstmt = con.prepareStatement("delete from favorite where user_id = ? and user_type = ? and pd_id = ? and f_type = '찜'");
+			pstmt.setString(1, id);
+			pstmt.setString(2, type);
+			pstmt.setInt(3, pd_id);
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
 	}
 }

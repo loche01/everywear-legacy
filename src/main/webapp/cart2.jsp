@@ -45,7 +45,7 @@ Vector<FavoriteDTO> flist = fDao.getUserCart(userId, userType);
 <meta charset="UTF-8">
 <title>에브리웨어 | everyWEAR</title>
 <link rel="icon" type="image/png" href="images/fav-icon.png">
-<link rel="stylesheet" type="text/css" href="css/cart.css">
+<link rel="stylesheet" type="text/css" href="css/cart.css?v=20260918">
 </head>
 <body>
 

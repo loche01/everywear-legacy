@@ -78,7 +78,7 @@
 					<div class="total-price" id="tprice">KRW 0</div>
 
 					<div class="buy-buttons">
-						<button class="btn outline" onclick="addToBag('<%=pDto.getP_id()%>')">ADD TO BAG</button>
+						<button class="btn outline" onclick="addToBag('<%=pDto.getP_id()%>', this)">ADD TO BAG</button>
 						<button class="btn filled" onclick="buyNow('<%=pDto.getP_id()%>')">BUY NOW</button>
 						<button class="btn wishlist-btn" id="wishlistBtn" onclick="addToWish('<%=pDto.getP_id()%>')">🤍</button>
 					</div>

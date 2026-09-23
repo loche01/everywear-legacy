@@ -118,7 +118,7 @@ DecimalFormat formatter = new DecimalFormat("#,###");
 					<div class="total-price" id="tprice">KRW 0</div>
 
 					<div class="buy-buttons">
-						<button class="btn outline" onclick="addToBag('<%=pDto.getP_id()%>')">ADD TO BAG</button>
+						<button class="btn outline" onclick="addToBag('<%=pDto.getP_id()%>', this)">ADD TO BAG</button>
 						<button class="btn filled" onclick="buyNow('<%=pDto.getP_id()%>')">BUY NOW</button>
 						<button class="btn wishlist-btn" id="wishlistBtn" onclick="addToWish('<%=pDto.getP_id()%>')">🤍</button>
 					</div>
@@ -392,6 +392,11 @@ DecimalFormat formatter = new DecimalFormat("#,###");
 		<input type="hidden" name="p_id" id="hidPID">
 	</form>
 
+	<form action="pay.jsp" method="post" id="goPayForm">
+		<input type="hidden" id="hidden_pd_id" name="pd_id">
+		<input type="hidden" name="quantity" value="1">
+	</form>
+
 <script>
 function writeQNA(p_id){
 	<%
@@ -478,7 +483,7 @@ function writeQNA(p_id){
 	</script>
 				<script>
 				 let selectedSize = null;
-				function addToBag(p_id){
+				function addToBag(p_id, btnEl){
 					<%
 					String user_id = (String)session.getAttribute("id");
 					if(user_id == null || user_id.equals("") ){
@@ -490,16 +495,38 @@ function writeQNA(p_id){
 				        alert("사이즈를 선택해주세요.");
 				        return false;
 				      }
-				    
+
 				     fetch("addCart.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
-				     .then(res => res.json())
+				     .then(res => {
+				       if (!res.ok) {
+				         const error = new Error("cart request failed");
+				         error.status = res.status;
+				         throw error;
+				       }
+				       return res.json();
+				     })
 				     .then(data => {
 				       if (data.result === "success") {
-				    	   alert("장바구니에 추가되었습니다!");
+				    	   // alert()는 눈에 띄지 않을 수 있어 버튼 자체에 즉시 시각 피드백을 준다.
+				    	   if (btnEl) {
+				    	     const original = btnEl.textContent;
+				    	     btnEl.textContent = "담았습니다 ✓";
+				    	     btnEl.disabled = true;
+				    	     setTimeout(() => { btnEl.textContent = original; btnEl.disabled = false; }, 1500);
+				    	   } else {
+				    	     alert("장바구니에 추가되었습니다!");
+				    	   }
 				       } else {
 				 		alert("장바구니에 넣을 수 없습니다.");
 				       }
-				     });				
+				     })
+				     .catch(error => {
+				       if (error && error.status === 401) {
+				         alert("로그인이 필요합니다.");
+				       } else {
+				         alert("장바구니에 넣을 수 없습니다.");
+				       }
+				     });
 				}
 				
 				function buyNow(p_id){
@@ -552,11 +579,11 @@ function writeQNA(p_id){
 				        return false;
 				      }
 				    
-				     fetch("addWish.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
+				     const removingWish = document.getElementById("wishlistBtn").classList.contains("active"); /* ❤️ 상태면 해제, 🤍 상태면 찜 */ fetch(removingWish ? "deleteWish.jsp" : "addWish.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
 				     .then(res => res.json())
 				     .then(data => {
 				       if (data.result === "success") {
-				    	   alert("해당 상품이 찜되었습니다!");
+				    	   alert(removingWish ? "찜이 해제되었습니다." : "해당 상품이 찜되었습니다!");
 				    	   const wishlistBtn = document.getElementById("wishlistBtn");
 
 				    	   wishlistBtn.classList.toggle("active");

@@ -44,7 +44,7 @@
 <meta charset="UTF-8">
 <title>에브리웨어 | everyWEAR</title>
 <link rel="icon" type="image/png" href="images/fav-icon.png">
-<link rel="stylesheet" type="text/css" href="css/postMn.css?v=6541">
+<link rel="stylesheet" type="text/css" href="css/postMn.css?v=20260918">
 </head>
 <body>
 
@@ -108,9 +108,9 @@
 							<tr class="QnABox">
 								<td class="pdInfo" onclick="javascropt:reviewDetail('<%=reviewDto.getR_id()%>')">
 									<div class="product-box">
-										<img src="review_images/<%=reImgDto.getRi_url()%>" alt="상품 이미지" class="product-img">
+										<img src="review_images/<%=reImgDto.getRi_url()%>" alt="ARCH LOGO VARSITY JACKET" class="product-img">
 										<div class="product-info">
-											<strong>DEMO PRODUCT</strong>
+											<strong>ARCH LOGO VARSITY JACKET</strong>
 											<br> NAVY
 											<br><%=reviewDto.getR_content()%>
 										</div>
@@ -130,7 +130,7 @@
 								<td class="pdInfo" onclick="javascropt:reviewDetail('<%=reviewDto.getR_id()%>')">
 									<div class="product-box">
 										<div class="product-info">
-											<strong>DEMO PRODUCT</strong>
+											<strong>ARCH LOGO VARSITY JACKET</strong>
 											<br> NAVY
 											<br><%=reviewDto.getR_content()%>
 										</div>
@@ -174,7 +174,7 @@
 							<tr class="QnABox">
 								<td class="pdInfo" onclick="javascript:goDetailWithReply('<%=qnaDto.getI_id()%>')">
 									<div class="product-box">
-										<img src="Q&A_images/<%=qnaImgDto.getIi_url()%>" alt="상품 이미지" class="product-img">
+										<img src="Q&A_images/<%=qnaImgDto.getIi_url()%>" alt="ARCH LOGO VARSITY JACKET" class="product-img">
 										<div class="product-info">
 										<%if(qnaDto.getI_isPrivate().equals("Y")){ %>
 											<strong><%=qnaDto.getI_title()%> &#128274;</strong>
@@ -197,7 +197,7 @@
 							<tr class="QnABox">
 								<td class="pdInfo" onclick="javascript:goDetail('<%=qnaDto.getI_id()%>')">
 									<div class="product-box">
-										<img src="Q&A_images/<%=qnaImgDto.getIi_url()%>" alt="상품 이미지" class="product-img">
+										<img src="Q&A_images/<%=qnaImgDto.getIi_url()%>" alt="ARCH LOGO VARSITY JACKET" class="product-img">
 										<div class="product-info">
 										<%if(qnaDto.getI_isPrivate().equals("Y")){ %>
 											<strong><%=qnaDto.getI_title()%> &#128274;</strong>

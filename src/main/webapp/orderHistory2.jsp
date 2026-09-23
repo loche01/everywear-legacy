@@ -35,7 +35,7 @@ Vector<OrdersDTO> olist = oDao.getOrderHistory(userId, userType);
 <meta charset="UTF-8">
 <title>에브리웨어 | everyWEAR</title>
 <link rel="icon" type="image/png" href="images/fav-icon.png">
-<link rel="stylesheet" type="text/css" href="css/orderHistory.css">
+<link rel="stylesheet" type="text/css" href="css/orderHistory.css?v=20260918">
 </head>
 <body>
 
@@ -119,7 +119,7 @@ Vector<OrdersDTO> olist = oDao.getOrderHistory(userId, userType);
 					
 
 <!-- 					<div class="order-row done">
-						<img src="images/product-placeholder.svg" alt="상품 이미지">
+						<img src="images/orderHistory3.jpg" alt="상품 이미지">
 						<div class="order-info">
 							<p class="item-name">AETHER NYLON JACKET</p>
 							<p class="item-option">one size</p>

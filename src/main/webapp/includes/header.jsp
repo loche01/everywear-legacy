@@ -46,7 +46,7 @@ if (queryString != null) {
 		<div class="nav-right">
 			<form action="<%=request.getContextPath()%>/UserLogout" method="post" style="display:inline;margin:0">
 				<input type="hidden" name="userCsrfToken" value="<%=Security.UserRequestGuard.token(session)%>">
-				<button type="submit" style="border:0;background:none;padding:0;font:inherit;cursor:pointer">LOGOUT</button>
+				<button type="submit" style="appearance:none;-webkit-appearance:none;border:0;background:none;padding:0;margin-left:30px;font-family:inherit;font-size:14px;font-weight:bold;color:black;line-height:normal;letter-spacing:normal;vertical-align:baseline;cursor:pointer">LOGOUT</button>
 			</form> <a href="cart2.jsp">CART</a>
 		</div>
 		<%
@@ -62,7 +62,6 @@ if (queryString != null) {
 			<a href="productList.jsp?cat=top">TOP</a>
 			<a href="productList.jsp?cat=bottom">BOTTOM</a>
 			<a href="productList.jsp?cat=acc">ACC</a>
-			<a href="#">SALE</a>
 			<a href="myPage.jsp" class="group-gap">MY PAGE</a>
 			<a href="board.jsp">BOARD</a>
 		</div>

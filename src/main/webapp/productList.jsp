@@ -812,7 +812,7 @@ Vector<ProductDTO> plist = new Vector<ProductDTO>();
 	</script>
 				<script>
 				 let selectedSize = null;
-				function addToBag(p_id){
+				function addToBag(p_id, btnEl){
 					<%
 					String user_id = (String)session.getAttribute("id");
 					if(user_id == null || user_id.equals("") ){
@@ -824,16 +824,38 @@ Vector<ProductDTO> plist = new Vector<ProductDTO>();
 				        alert("사이즈를 선택해주세요.");
 				        return false;
 				      }
-				    
+
 				     fetch("addCart.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
-				     .then(res => res.json())
+				     .then(res => {
+				       if (!res.ok) {
+				         const error = new Error("cart request failed");
+				         error.status = res.status;
+				         throw error;
+				       }
+				       return res.json();
+				     })
 				     .then(data => {
 				       if (data.result === "success") {
-				    	   alert("장바구니에 추가되었습니다!");
+				    	   // alert()는 눈에 띄지 않을 수 있어 버튼 자체에 즉시 시각 피드백을 준다.
+				    	   if (btnEl) {
+				    	     const original = btnEl.textContent;
+				    	     btnEl.textContent = "담았습니다 ✓";
+				    	     btnEl.disabled = true;
+				    	     setTimeout(() => { btnEl.textContent = original; btnEl.disabled = false; }, 1500);
+				    	   } else {
+				    	     alert("장바구니에 추가되었습니다!");
+				    	   }
 				       } else {
 				 		alert("장바구니에 넣을 수 없습니다.");
 				       }
-				     });				
+				     })
+				     .catch(error => {
+				       if (error && error.status === 401) {
+				         alert("로그인이 필요합니다.");
+				       } else {
+				         alert("장바구니에 넣을 수 없습니다.");
+				       }
+				     });
 				}
 				
 				function buyNow(p_id){
@@ -887,11 +909,11 @@ Vector<ProductDTO> plist = new Vector<ProductDTO>();
 				        return false;
 				      }
 				    
-				     fetch("addWish.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
+				     const removingWish = document.getElementById("wishlistBtn").classList.contains("active"); /* ❤️ 상태면 해제, 🤍 상태면 찜 */ fetch(removingWish ? "deleteWish.jsp" : "addWish.jsp", {method: "POST", headers: {"Content-Type":"application/x-www-form-urlencoded"}, body: "p_id=" + encodeURIComponent(p_id) + "&size=" + encodeURIComponent(selectedSize) + "&userCsrfToken=<%=Security.UserRequestGuard.token(session)%>"})
 				     .then(res => res.json())
 				     .then(data => {
 				       if (data.result === "success") {
-				    	   alert("해당 상품이 찜되었습니다!");
+				    	   alert(removingWish ? "찜이 해제되었습니다." : "해당 상품이 찜되었습니다!");
 				    		const wishlistBtn = document.getElementById("wishlistBtn");
 				          	wishlistBtn.classList.toggle("active");
 				          	wishlistBtn.textContent = wishlistBtn.classList.contains("active") ? "❤" : "🤍";
