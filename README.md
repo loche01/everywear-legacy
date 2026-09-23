@@ -32,6 +32,8 @@ everyWEAR는 상품 탐색부터 장바구니·찜·주문까지 이어지는 �
 
 관리자 주문 관리 화면 (샘플 주문 데이터)
 
+> 🎬 **전체 기능 시연:** 사용자·관리자 기능을 실제로 실행하며 촬영한 화면 79장을 [기능 시연 문서](docs/demo/README.md)([PDF](docs/demo/everyWEAR-demo.pdf))로 정리했습니다.
+
 ---
 
 ## 📱 주요 기능
@@ -260,6 +262,7 @@ everyWEAR는 상품 탐색부터 장바구니·찜·주문까지 이어지는 �
 
 ## 📚 관련 문서
 
+- [기능 시연 (화면 79장)](docs/demo/README.md)
 - [복구 과정](docs/recovery-status.md)
 - [주요 트러블슈팅](docs/troubleshooting.md)
 - [DB 복구와 데이터 구분](docs/db-recovery.md)

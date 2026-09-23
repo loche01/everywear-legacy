@@ -1,5 +1,6 @@
 # everyWEAR Legacy 문서
 
+- [기능 시연](demo/README.md) — 사용자·관리자 기능을 실행하며 촬영한 화면 79장
 - [복구 과정](recovery-status.md) — 무엇을 어떤 순서로 복구하고 고쳤는지
 - [주요 트러블슈팅](troubleshooting.md) — 문제·원인·해결·결과로 정리한 주요 사례
 - [DB 복구와 데이터 구분](db-recovery.md) — 설치 SQL, 원본 상품 데이터, 참고용 원본 schema
