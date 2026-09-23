@@ -2,18 +2,23 @@
 
 ## Legacy 종료 전에 처리
 
-- 첫 공개용 커밋 전에 스냅샷의 credential, 테스트 fixture 및 개인정보 후보를 확인한다. 복구 저장소의 기존 Git history는 이 공개본에 포함하지 않는다.
+- **(완료, PHASE 7 당시)** 첫 공개용 커밋 전에 스냅샷의 credential, 테스트 fixture 및 개인정보 후보를 확인했다. 복구 저장소의 기존 Git history는 이 공개본에 포함하지 않는다.
+- PHASE 8 변경(원본 카탈로그·원본 시각 요소 복원)을 clean release/GitHub에 재반영하기 전, 동일하게 credential·테스트 fixture·개인정보 후보가 새로 유입되지 않았는지 재확인한다. 이번 PHASE 8 작업은 외부 크롤링 이미지 URL과 원본 상품 텍스트를 다시 포함하므로, 개인 handle/credential 재유입 여부를 반드시 재점검한다.
 
 ## 해결됨
 
-- 권리 근거가 확인되지 않은 메인 영상은 공개본에서 제외했다. `main2.jsp`는 저장소 자체 `images/product-placeholder.svg`를 사용한다.
+- **원본 상품 카탈로그(product 1,518 / product_detail 3,513 / product_image 7,410)를 복원했다.** 합성 24개 Demo seed(`db/demo_product_sample.sql`)는 제거했다. 자세한 내용은 [DB 복구와 데이터 구분](db-recovery.md) 참고.
+- **원래 팀 프로젝트의 main2.jsp 영상·이미지, 로그인/상품 화면의 시각 요소를 복원했다.** `main2.jsp`는 다시 `videos/mainvideo-white.mp4`와 원본 룩북 이미지를 사용한다. 로그인 화면은 원본 team UI의 Google/Kakao 아이콘·레이아웃을 사용한다(Naver는 아래 참고).
 - 미사용 Windows 업로드 절대경로와 호출자 없는 구형 리뷰 삭제 오버로드를 공개본에서 제거했다. 보호된 리뷰 삭제 경로는 유지한다.
 
 - PHASE 6: 미검증 결제 경로 안전 마감. `payInsert.jsp`/`payComplete.jsp`/`payProc.jsp`/`sendMSG.jsp` 에서 payment·orders·delivery 생성, 적립금 변경, 장바구니 삭제, 실제 SMS 발송, PortOne SDK 호출을 모두 제거하고 `pay.jsp` 에 Demo 표기를 추가했다. 클라이언트가 결제 성공을 위조해 주문/결제를 확정할 수 있던 경로가 차단되었다.
 
 ## 남은 한계 (Legacy Demo로 유지)
 
-- Google/Kakao/Naver 실제 OAuth E2E는 수행하지 않았다.
+- Google/Kakao 실제 OAuth E2E는 수행하지 않았다.
+- **Naver 로그인은 로그인 화면 자체에서 이번 UI 복원 범위에서 제외했다.** `NaverLoginServlet`과 관련 `Security` 로직, `images/Naver.png`는 삭제하지 않고 남겨 두었으며(login.jsp의 관련 스크립틀릿은 JSP 주석으로 보존), 추후 별도로 다시 붙일 수 있다.
+- 상품 이미지는 원본 크롤링 당시 외부 CDN(nomanual-shop.com, musinsa, msscdn, sixshop) URL을 그대로 사용한다. 자체 호스팅이 아니므로 외부 서비스 상태에 따라 일부 이미지가 로드되지 않을 수 있다.
+- 원본 상품 1,518개 중 314개는 원본 크롤링 데이터 자체에 사이즈(`product_detail`) 정보가 없어 장바구니에 담을 수 없다.
 
 - 실제 PortOne 서버 검증 API(`GET /payments/{imp_uid}`) 및 실 PG 결제 연동은 구현하지 않았다. 결제는 Demo 안내로만 종료된다.
 - 관리자 refund workflow 는 `refund` 테이블 상태관리(`rf_status`)일 뿐 실제 PG cancellation/환불 호출이 아니다.

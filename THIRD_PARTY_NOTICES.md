@@ -130,30 +130,21 @@
 
 ## 로그인 브랜드 자산 (`src/main/webapp/images/`)
 
-### google-signin.png
+**2026-09 업데이트:** 원본 팀 프로젝트(2025) 당시 실제로 사용했던 로그인 화면 UI를 복원하기로 결정하면서, 아래 `google-signin.png`/`kakao-login.png`(공식 브랜딩 자산으로 별도 교체했던 파일) 대신 원본 팀 프로젝트의 `Google.png`/`kakao.png`를 다시 사용합니다. 이 문서는 그 결정과 두 자산군의 출처 차이를 사실대로 기록합니다. 법적 판단이나 라이선스 적합성 보증은 아닙니다.
 
-- **Upstream:** Google — [Sign in with Google Branding Guidelines](https://developers.google.com/identity/branding-guidelines)
-- **출처:** 공식 사전승인 자산 ZIP(`https://developers.google.com/static/identity/images/signin-assets.zip`)에서 그대로 추출 — 리터칭/색상 변경/크롭 없음
-- **선택 파일:** Android + Web / PNG @2x / Light / "Show text=No, Shape=Square"
-- **Usage in everyWEAR:** [login.jsp](src/main/webapp/login.jsp) 소셜 로그인 버튼(아이콘, 별도 `<span>` 텍스트와 조합)
-- **주의:** 브랜드 가이드는 "아이콘 단독 사용은 action button 등 제한적 경우"로만 언급하며, 계정유형 표시 등 다른 용도는 다루지 않음. 이번 정리로 myPage.jsp/crm/basic.jsp의 계정유형 표시는 이미지 대신 텍스트 배지로 전환하여 이 회색지대를 회피함.
-- **상표 고지:** "Google"은 Google LLC의 상표입니다. 로고 사용은 위 공식 브랜딩 가이드라인을 따릅니다.
+### Google.png, kakao.png, Naver.png (현재 사용 중 — Google/Kakao) / 보존 자산 (Naver)
 
-### kakao-login.png
+- **출처:** 2025년 원본 팀 프로젝트에서부터 사용되던 파일입니다. 정확한 최초 출처(디자이너 제작, 웹 검색, 리소스 사이트 등)는 팀 프로젝트 당시 기록이 남아있지 않아 **확인되지 않습니다.**
+- **크기:** `Google.png` 28×28, `kakao.png` 40×40, `Naver.png` 54×54.
+- **Usage in everyWEAR:** [login.jsp](src/main/webapp/login.jsp)의 Google/Kakao 소셜 로그인 버튼(아이콘 + 별도 `<span>` 텍스트 조합), [myPage.jsp](src/main/webapp/myPage.jsp)/[crm/basic.jsp](src/main/webapp/crm/basic.jsp)의 가입 경로 표시 아이콘.
+- **Naver.png는 로그인 화면에서 사용하지 않습니다.** 사용자 확정 요구사항에 따라 Naver 로그인 버튼을 로그인 화면에서 제외했습니다(OAuth 로직·`NaverLoginServlet`은 유지). 파일은 향후 재도입을 위해 미사용 자산으로 저장소에 보존합니다.
+- 이 세 파일 모두 출처가 확인되지 않은 자산입니다. 사용자가 프로젝트 당시 교육기관 강사 및 대상 서비스와 상의했다고 밝힌 원본 팀 프로젝트 자산이며, 상표권자의 별도 라이선스 확인 없이 사용 중입니다.
 
-- **Upstream:** Kakao — [카카오 로그인 디자인 가이드](https://developers.kakao.com/docs/latest/ko/kakaologin/design-guide), 리소스: https://developers.kakao.com/tool/resource/login
-- **출처:** 공식 리소스 생성기에서 완성형(심볼+레이블+컨테이너) · English · Middle · Small 옵션으로 생성된 공식 PNG(`kakao_login_medium_narrow.png`, en)를 그대로 사용 — 리터칭/색상 변경 없음
-- **Usage in everyWEAR:** [login.jsp](src/main/webapp/login.jsp) 소셜 로그인 버튼(심볼+레이블이 이미지 안에 포함된 완성형 버튼이므로 별도 텍스트 `<span>` 없이 이미지 단독 사용)
-- **참고:** 공식 가이드는 "심볼 없이 카카오 로그인 버튼을 구성할 수 없다"고 명시하여, 완성형(전체) 버튼 자산만 공식적으로 제공됨. 이에 따라 myPage.jsp/crm/basic.jsp의 계정유형 표시는 이미지 대신 텍스트 배지로 전환함.
-- **상표 고지:** "Kakao"는 카카오의 상표입니다. 로고 사용은 위 공식 디자인 가이드를 따릅니다.
+### google-signin.png, kakao-login.png — 제거됨 (2026-09-13 추가, 2026-09-16 제거)
 
-### Naver — 이미지 자산 미포함
-
-- 이전 `Naver.png`(출처 미확인)는 삭제했습니다.
-- 이번 작업에서는 `developers.naver.com`(네이버 로그인 공식 브랜드 가이드 소재지)에 대한 접근이 이 세션의 도구 정책상 제한되어 있어 공식 자산을 확인·다운로드하지 못했습니다.
-- 대신 [login.jsp](src/main/webapp/login.jsp)의 Naver 로그인 버튼은 이미지 없이 텍스트("Sign in with Naver")만 표시하도록 변경했습니다. 브랜드 색상/로고 형태를 임의로 흉내 내지 않았습니다.
-- Naver OAuth 연동 로직 자체는 변경하지 않았습니다.
-- 추후 https://developers.naver.com/docs/login/bi/ 에서 공식 자산을 직접 확인 후 교체하는 것을 권장합니다.
+- 공개 정리 과정에서 한 차례 위 원본 아이콘을 대체하기 위해 각 사의 공식 브랜딩 자산으로 교체한 적이 있습니다(Google [Sign in with Google Branding Guidelines](https://developers.google.com/identity/branding-guidelines) 사전승인 자산, Kakao [로그인 디자인 가이드](https://developers.kakao.com/docs/latest/ko/kakaologin/design-guide) 공식 리소스 생성기 산출물).
+- 이후 원본 팀 프로젝트 UI를 복원하기로 하면서 이 두 파일은 로그인 화면에서 더 이상 참조되지 않아 저장소에서 제거했습니다.
+- Naver의 경우 이 교체 시점에 공식 대체 자산을 확인하지 못해(`developers.naver.com` 접근 제한) 기존 `Naver.png`를 삭제하고 텍스트 전용 버튼으로 전환한 이력이 있습니다. 이번 복원에서 `Naver.png` 자체는 다시 복원했으나, 로그인 화면에는 노출하지 않습니다(위 항목 참고).
 
 ---
 

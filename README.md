@@ -6,10 +6,12 @@ Java/JSP 기반 의류 쇼핑몰 팀 프로젝트를 프로젝트 종료 후 개
 
 ## 프로젝트 상태
 
-- **PUBLIC FRESH INSTALL — PASS:** 공개 SQL과 합성 상품 seed로 신규 설치·로그인·장바구니·찜·텍스트 Q&A 검증 완료.
+- **원본 상품 카탈로그 복원 — PASS:** 당시 크롤링한 원본 상품 데이터(product 1,518 / product_detail 3,513 / product_image 7,410, 실제 상품명·가격·외부 이미지 URL 포함)를 공개 SQL로 복원했습니다. 합성 24개 Demo seed로 대체하지 않습니다.
+- **PUBLIC FRESH INSTALL — PASS:** 공개 SQL과 원본 상품 카탈로그로 신규 설치·로그인·상품 목록/NEW/BEST/상세·장바구니·찜·텍스트 Q&A 검증 완료.
 - **FINAL INTEGRATED REGRESSION — PASS WITH LIMITATIONS:** 별도의 복구 기준 DB에서 통합 회귀 검증 완료.
 - 실제 결제·주문·배송을 수행하지 않는 Demo입니다. 외부 인증·문자·메일 서비스의 live E2E는 미검증입니다.
 - 공개 저장소는 복구 기준 저장소와 분리된 새 Git history로 시작합니다.
+- 상품 이미지는 당시 크롤링 대상 쇼핑몰(nomanual-shop.com)과 제휴 CDN(musinsa, msscdn, sixshop)의 외부 URL을 그대로 사용합니다. 자체 호스팅 이미지가 아니므로 외부 서비스 상태에 따라 일부 이미지가 로드되지 않을 수 있습니다.
 
 ## 팀 프로젝트와 나의 역할
 
@@ -100,7 +102,10 @@ SOURCE db/recovery_admin_auth_schema.sql;
 SOURCE db/recovery_order_schema.sql;
 SOURCE db/recovery_qna_review_schema.sql;
 SOURCE db/recovery_notice_schema.sql;
-SOURCE db/demo_product_sample.sql;
+SOURCE db/recovery_faq_schema.sql;
+SOURCE db/recovery_category_schema.sql;
+SOURCE db/original_product_catalog.sql;
+SOURCE db/original_product_image_url_fix.sql;
 ```
 
 `recovery_minimal.sql`이 `everywear_recovery` schema를 생성하고 선택하므로 CREATE DATABASE를 별도로 선실행하지 않습니다. 오류가 발생하면 다음 파일을 적용하지 말고 원인을 확인하세요.
@@ -108,7 +113,9 @@ SOURCE db/demo_product_sample.sql;
 - 빈 DB 기준 **1회 적용** 순서입니다. 일부 CREATE/ALTER와 seed는 재실행에 안전하지 않습니다. minimal SQL의 테스트 계정을 별도로 다시 INSERT하지 않습니다.
 - schema 이름을 바꿀 경우 저장소 밖 SQL 사본의 `CREATE DATABASE`·`USE` 등 동일 schema 식별자를 모두 바꿉니다. 접속 시 기본 DB 이름만 바꾸어서는 격리되지 않습니다.
 - `db/legacy-original/`은 참고 자료이며 초기화에 사용하지 않습니다. 실제 복구 baseline의 비공개 원본 데이터는 필요하지 않습니다.
-- [Demo seed](db/demo_product_sample.sql)는 합성 상품 24개·옵션 65개·placeholder 이미지 24개를 넣습니다. 초기 테이블은 20개입니다. 상품 관련 3개 테이블과 사용자 1행을 제외한 나머지 16개 테이블은 비어 있습니다.
+- **1단계 — 상품 데이터 적재:** [원본 상품 카탈로그](db/original_product_catalog.sql)는 당시 크롤링한 원본 상품 product 1,518 · product_detail 3,513 · product_image 7,410 을 그대로 넣습니다. 실제 상품명·가격·설명·색상과 외부 CDN 이미지 URL을 포함합니다. 초기 테이블은 22개입니다. 상품 관련 3개 테이블, 사용자 1행, FAQ 21건, 카테고리 25건을 제외한 나머지 16개 테이블은 비어 있습니다.
+- **2단계 — 최종 URL 보정 (1단계 직후 1회):** [이미지 URL 보정](db/original_product_image_url_fix.sql)은 원본 크롤링 당시 상대경로로 저장된 이미지 URL 181건만 `nomanual-shop.com` 기준 절대 URL로 보정합니다. 원본 카탈로그 SQL 내용 자체는 수정하지 않습니다.
+- 과거 합성 24개 Demo seed(`db/demo_product_sample.sql`)는 제거했습니다. 원본 카탈로그와 함께 적용할 경우 `product_detail`의 고정 PK(1~65)가 충돌하므로 두 파일을 함께 적용하지 않습니다.
 
 ### 4. DB 계정과 환경변수
 
@@ -140,14 +147,21 @@ SOURCE db/demo_product_sample.sql;
 
 ## 검증 결과
 
-### 공개 SQL 신규 설치 — PUBLIC FRESH INSTALL: PASS
+### 원본 카탈로그 복원 — PASS (disposable 환경, 정적+런타임 검증)
 
-2026-09-12, 독립 MySQL 8.0.46에 공개 SQL 8개를 순차 적용했습니다. 원본 SQL은 유지하고 임시 사본의 schema 식별자만 변경했으며, 기존 복구 DB 데이터는 복사하지 않았습니다.
+원본 크롤링 데이터 소스(`everyWEAR_recovered` 저장소, PHASE 7C 직전 commit)에서 상품 SQL을 추출해 별도 disposable MySQL 8.0.46·Tomcat 9(기존 실행 환경과 완전히 분리된 port/socket/datadir)에 적용해 검증했습니다.
 
-- 초기 테이블 20개 및 Demo seed 수 일치.
-- Java 21 전체 75개 소스 compile, JSP 108/108 precompile 및 생성 Java compile PASS.
-- 메인·상품 목록/NEW/BEST·Demo 상세 ID 8/10/11/12/13·placeholder·로그인 화면 HTTP 200.
-- 일반 로그인, 장바구니·찜·텍스트 Q&A CRUD PASS. 테스트 행 잔존 0 확인 후 임시 DB·계정·runtime 정리 완료.
+- row count: `product` 1,518 / `product_detail` 3,513 / `product_image` 7,410 — 모두 기대값과 일치.
+- PK 중복 0, `product_detail`·`product_image` orphan FK 0, 이미지가 없는 상품 0, `pi_orders=1` 이미지가 상품마다 정확히 1개.
+- 이미지 URL 보정 적용 후 상대경로(`/web/...`) 잔존 0건.
+- Java 21 전체 75개 소스 compile PASS(사전 존재하던 `finalize()` deprecation 경고 외 신규 오류·경고 없음).
+- HTTP 200 확인: `main2.jsp`, `productList.jsp?cat=all/outer/top/bottom/acc`, `productNew.jsp`, `productBest.jsp`, `pdDetail.jsp`(사이즈 있는 상품·사이즈 없는 상품 모두), `login.jsp`. `productList.jsp?cat=all`은 실제로 1,518개 항목을 렌더링함을 확인.
+- 보안 회귀 스팟체크: POST 미사용 mutation 요청 405 거부, 관리자 미인증 접근 시 `admin_login.jsp`로 302 리다이렉트, `login.jsp`의 외부 redirect 파라미터가 내부 경로로 정규화됨을 확인.
+- 이번 세션에서는 108개 JSP 전체 precompile과 DB 연동 기능 회귀(로그인 세션, cart/wish CRUD)까지는 수행하지 않았습니다. 다음 단계 검증 대상입니다.
+
+### 공개 SQL 신규 설치 — PUBLIC FRESH INSTALL: PASS (합성 Demo 24개 기준, 이전 세션)
+
+2026-09-12, 독립 MySQL 8.0.46에 공개 SQL 8개(당시 `db/demo_product_sample.sql` 포함)를 순차 적용했습니다. 이 기록은 **원본 카탈로그 복원 이전**의 합성 24개 Demo seed 기준 검증이며, 현재 설치 절차는 위 원본 카탈로그로 대체되었습니다. Java 21 전체 소스 compile, JSP 108/108 precompile, 일반 로그인·장바구니·찜·텍스트 Q&A CRUD를 포함한 전체 절차는 과거 기록으로 유지합니다.
 
 OAuth·SMS·Gmail·PG 등 외부 서비스 live E2E는 검증 범위에서 제외했습니다.
 
@@ -160,12 +174,14 @@ OAuth·SMS·Gmail·PG 등 외부 서비스 live E2E는 검증 범위에서 제�
 ## 제한사항
 
 - PortOne 실제 PG 결제·취소·환불은 미구현입니다. 관리자 환불은 DB 상태 관리 수준입니다.
-- Google/Kakao/Naver live OAuth E2E와 CoolSMS/Gmail live E2E는 미수행입니다.
+- Google/Kakao live OAuth E2E와 CoolSMS/Gmail live E2E는 미수행입니다. Naver 로그인은 로그인 화면 자체에서 이번 복원 범위 제외로 제공하지 않습니다.
 - 이메일 변경 OTP는 미구현이며 관리자 OTP 전체 보안 재설계는 미완료입니다.
 - OTP 발송에는 세션 cooldown이 적용되지만 IP·수신자 단위 rate limiting은 없습니다.
 - 일부 미복구 리뷰 관리·작성 경로가 제한됩니다.
 - 모든 JSP의 escaping과 DAO 예외처리를 전면 재구성한 것은 아닙니다. 파일·DB 처리 사이 비정상 종료 시 고아 파일 가능성도 남습니다.
-- 공개 상품 데이터는 원본 전체가 아닌 합성 Demo seed입니다.
+- 상품 이미지는 자체 호스팅이 아닌 원본 크롤링 당시 외부 CDN URL을 그대로 사용합니다. 외부 서비스 상태·hotlink 정책에 따라 일부 이미지가 로드되지 않을 수 있습니다.
+- 원본 상품 1,518개 중 314개는 원본 크롤링 데이터 자체에 사이즈(`product_detail`) 정보가 없어 장바구니 담기가 되지 않습니다(상품 상세 화면은 정상 표시).
+- 로그인 화면은 Google/Kakao만 제공합니다. Naver 로그인 버튼은 이번 복원 범위에서 제외했습니다. `NaverLoginServlet`과 관련 보안 로직, `images/Naver.png`는 삭제하지 않고 남겨 두었으며 추후 별도로 재도입할 수 있습니다.
 
 ## 라이선스 및 권리
 
