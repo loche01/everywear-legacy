@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 // Legacy 복구 범위에서 관리자 리뷰 상세관리는 지원하지 않는다.
-// recovery DB 에 review_comment / review_report 가 미복구 상태이고, deleteReview mutation 은
+// DB 에 review_comment / review_report 테이블을 복구하지 않았고, deleteReview mutation 은
 // 실제 review / review_image 를 삭제할 수 있으므로 이 경로를 안전 비활성화한다.
 // mutation(POST) 요청은 AdminAuthFilter 에서 DAO 호출 없이 410 으로 거부된다.
 response.setHeader("Cache-Control", "no-store");

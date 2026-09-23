@@ -1,12 +1,11 @@
 -- everyWEAR Q&A/리뷰 첨부 경로용 최소 recovery migration
--- 적용 대상: 격리 everywear_recovery DB (localhost:3307)
+-- 적용 대상: everywear_recovery DB
 -- 원본 TABLE.sql은 수정하지 않는다.
 -- 선행 migration: recovery_minimal.sql(user, inquiry, product_detail),
 --   recovery_cart_schema.sql / recovery_signup_schema.sql(user 보강),
 --   recovery_admin_auth_schema.sql(admin) 적용 이후에 실행한다.
 --
--- 이 파일은 PHASE 4(일반 사용자 Q&A/리뷰 mutation) E2E를 통과한 3307 정의와
--- phase4-20260909/schema.txt 보존본을 그대로 옮긴 것이다.
+-- 사용자 Q&A/리뷰 기능 검증을 통과한 테이블 정의를 그대로 옮긴 것이다.
 -- 컬럼 순서/타입/NULL/기본값/PK/FK/인덱스를 추측하거나 재설계하지 않는다.
 -- 원본 TABLE.sql 대비 복구 시 확정된 차이만 반영한다:
 --   review 는 미사용 r_heart 를 제외하고, user 복합 PK(user_id,user_type)에 맞춰

@@ -1,5 +1,5 @@
 -- everyWEAR 관리자 인증용 최소 recovery migration
--- 적용 대상: 격리 everywear_recovery DB (localhost:3307)
+-- 적용 대상: everywear_recovery DB
 -- 실제 관리자 계정이나 credential fixture는 포함하지 않는다.
 
 USE everywear_recovery;

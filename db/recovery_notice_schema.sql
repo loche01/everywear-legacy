@@ -1,4 +1,4 @@
--- PHASE 5B: 격리 everywear_recovery 전용. 승인 후에만 별도로 적용한다.
+-- everyWEAR 공지(notice) 테이블
 -- recovery_admin_auth_schema.sql 이후 적용. 계정/fixture/category는 포함하지 않는다.
 -- NoticeDAO의 SELECT * 위치 기반 읽기와 호환되도록 컬럼 순서를 유지한다.
 USE `everywear_recovery`;

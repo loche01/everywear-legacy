@@ -265,7 +265,7 @@ public class ProductServlet extends HttpServlet {
 
             // 기본 정보 수정 + 사이즈/재고 삭제·재삽입을 하나의 transaction 으로 처리한다.
             // 대상 상품이 없거나 어느 단계든 실패하면 rollback 되어 false 가 온다.
-            // (이미지 교체/삭제는 PHASE 5A 범위 밖 — 기존과 동일하게 update 에서 다루지 않는다.)
+            // (이미지 교체/삭제는 기존과 동일하게 update 에서 다루지 않는다.)
             String[] sizes = request.getParameterValues("sizes[]");
             String[] stocks = request.getParameterValues("stocks[]");
 

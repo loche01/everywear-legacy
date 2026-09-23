@@ -1,5 +1,5 @@
 -- everyWEAR 회원가입 경로용 최소 recovery migration
--- 적용 대상: 격리 everywear_recovery DB (localhost:3307)
+-- 적용 대상: everywear_recovery DB
 -- UserDAO의 위치 기반 INSERT/SELECT 계약을 위해 컬럼 순서를 유지한다.
 
 USE everywear_recovery;

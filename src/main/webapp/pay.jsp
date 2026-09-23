@@ -68,7 +68,7 @@
 		<h3>주문서 작성</h3>
 	</section>
 
-	<!-- PHASE 6: 실결제가 없는 Demo 환경임을 명확히 표시한다. -->
+	<!-- 실제 결제가 일어나지 않는 환경임을 표시한다. -->
 	<div style="max-width:900px;margin:16px auto;padding:14px 18px;background:#fff3cd;border:1px solid #ffe08a;border-radius:6px;color:#664d03;font-size:14px;text-align:center;">
 		<strong>DEMO STORE</strong> — 실제 결제·주문·배송은 발생하지 않습니다.
 	</div>
@@ -370,7 +370,7 @@
 	  <input type="hidden" name="Price" id="Price">        <!-- 결제금액 -->
 	  <input type="hidden" name="Products" value="<%=products%>"> <!-- 상품명 -->
 	  <input type="hidden" name="P_CHARSET" value="utf8">
-	  <input type="hidden" name="P_NEXT_URL" value="payComplete.jsp"> <!-- PHASE 6 이후 미사용 필드, 개인 도메인 제거 -->
+	  <input type="hidden" name="P_NEXT_URL" value="payComplete.jsp"> <!-- 미사용 필드. 원래 들어 있던 개인 도메인은 제거 -->
 	  <input type="hidden" name="PName" id="PName"> <!-- 이름 -->
 	  <input type="hidden" name="PZipcode" id="PZipcode"> <!-- 주소1 -->
 	  <input type="hidden" name="PAddress1" id="PAddress1"> <!-- 주소2 -->

@@ -1,36 +1,60 @@
-# Legacy 검증 가이드
+# 검증 가이드
 
-## 사전 확인
+## 검증 방법
 
-1. `git status`, branch, HEAD, repository-local Git identity와 remote 유무를 확인한다.
-2. 격리 MySQL이 `127.0.0.1:3307/everywear_recovery`인지 확인한다.
-3. 실제 credential을 출력하거나 테스트 파일에 복사하지 않는다.
-4. 기존 forensic 원본과 시스템 MySQL은 사용하지 않는다.
+**정적 검증**
 
-## 정적 검증
+- Java 21로 전체 Java 소스 컴파일
+- 변경한 JSP를 Tomcat 9 Jasper로 사전 컴파일
+- `git diff --check`로 공백·줄바꿈 오류 확인
+- 변경한 줄에 비밀번호·API 키·토큰 같은 값이 들어가지 않았는지 확인
 
-- Java 21로 전체 Java source를 compile한다.
-- 영향받은 JSP를 Tomcat 9/Jasper로 precompile하고 생성 Java도 Java 21로 확인한다.
-- `git -c core.whitespace=cr-at-eol diff --check`로 CRLF-aware 검사를 한다.
-- 변경 파일, diff stat, staged 파일을 명시적으로 확인한다.
-- 변경·신규 라인에서 password, API key, secret, token, fixture/helper/runtime 흔적을 검사한다. 이 검사는 전체 Git history 감사와 별개다.
+**화면 검증**
 
-## Browser 회귀
+HTTP 200만 보고 성공으로 판단하지 않았습니다. 화면에 실제로 표시된 내용, 브라우저 콘솔 오류, 네트워크 오류, Tomcat 로그 예외를 함께 확인했습니다.
 
-HTTP 200만으로 성공 판정하지 않는다. 실제 DOM, console warning/error, network error와 Tomcat exception을 함께 확인한다.
+**DB 검증**
 
-- 사용자: main → login/logout → signup → 상품 목록 → 상품 상세/사이즈·재고 → cart
-- 계정 보안: FORGOT → reset → 로그인, UNLOCK → reset → 로그인, POST·CSRF logout
-- 관리자: login/logout → 주문 목록·검색·상세 → 결제 정보 → 배송·송장 → 환불 조회·생성·상태 전이
+- 테스트 데이터는 표시용 값을 붙여 transaction으로 만들고, 끝나면 정확한 PK와 표시용 값으로만 지웠습니다.
+- 지운 뒤에는 테이블별 건수와 PK 순서 SHA-256 값을 테스트 전과 비교했습니다.
+- 실패하면 rollback하고 원인을 확인했습니다. 조건을 느슨하게 바꾸거나 schema 전체를 다시 적용하지 않았습니다.
 
-Naver, Gmail, CoolSMS, PortOne은 외부 credential과 운영 설정이 없는 상태에서 성공으로 판정하지 않는다.
+## 확인한 범위
 
-## DB E2E
+원본 상품 데이터(1,518개)와 샘플 회원·주문을 넣은 로컬 서버에서, 사용자·관리자 기능을 실행하며 화면 79개를 촬영했습니다.
 
-- fixture 계획에 생성 행, 기존 참조 행, marker, 정확한 cleanup SQL을 적는다.
-- write 직전 port/schema와 기준 count를 재확인하고 승인을 기다린다.
-- 명시적 컬럼과 generated key를 사용하며 예상 AUTO_INCREMENT 값을 하드코딩하지 않는다.
-- 실패 시 rollback하고 조건을 완화하거나 전체 migration을 재실행하지 않는다.
-- cleanup은 FK 역순과 정확한 PK·marker로 수행한다. 이후 기준 count와 sorted digest를 비교한다.
+**사용자**
 
-검증 후에도 `git add`/`commit` 직전에 diff와 민감정보 검사 결과를 보고하고 STOP한다.
+- 메인, 상품 목록(카테고리별)·NEW·BEST·상세·검색
+- 로그인·로그아웃, 회원가입·아이디 찾기·비밀번호 찾기 화면
+- 장바구니·찜 담기와 수정·삭제
+- 주문 내역, 마이페이지, 배송지, 게시물 관리
+- Q&A 작성·등록, 공지, FAQ
+
+**관리자**
+
+- 이메일 인증번호 로그인 (실제 메일 수신)
+- 대시보드, 회원 목록과 회원정보 수정, 탈퇴 회원
+- 상품 목록·필터·수정, 공지 등록
+- 주문 검색·상세, 배송 상태 변경, 환불 생성·상태 변경
+- 관리자 쪽 변경이 사용자 화면에 반영되는지
+
+**결제와 소셜 로그인**
+
+- 장바구니 → 주문서 → 결제에서 이니시스 테스트 결제창이 열리고, 상품명·금액이 장바구니와 같은지. 실제 청구는 없고 주문·결제 데이터도 만들지 않습니다.
+- Google: 실제 계정으로 로그인, 미가입 계정은 소셜 가입 화면, 가입 계정은 메인으로 이동
+- Kakao: 실제 계정으로 로그인, 회원번호와 닉네임 수신, 가입 계정은 메인으로 이동
+
+**보안**
+
+- 변경 요청을 GET으로 보내면 405 거부
+- 관리자 화면에 로그인 없이 접근하면 관리자 로그인으로 이동
+- 로그인 후 이동 주소에 외부 URL을 넣으면 내부 경로로 바뀜
+- 첫 로그인 시 평문 비밀번호가 해시로 바뀜, 로그인 성공 시 세션 ID 변경, 5회 실패 시 잠금
+
+## 확인하지 못한 범위
+
+- CoolSMS 문자 발송 (키 미설정). 그래서 휴대폰 인증이 필요한 회원가입·아이디 찾기·소셜 회원가입 완료는 끝까지 실행하지 못했습니다.
+- 실제 PG 결제와 환불
+- Naver 로그인
+- 외부 CDN 상품 이미지 전체의 로딩률 (일부 표본만 확인)

@@ -1,4 +1,4 @@
--- everyWEAR Lee 기준선용 최소 스키마
+-- everyWEAR 최소 실행용 스키마
 -- 원본 TABLE.sql을 수정하지 않고 다음 경로만 검증한다.
 -- main.jsp -> DB 연결 -> 일반 로그인 -> 상품 목록/상세
 

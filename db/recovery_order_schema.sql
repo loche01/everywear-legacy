@@ -1,5 +1,5 @@
 -- everyWEAR 주문/결제/환불/배송용 최소 recovery migration
--- 적용 대상: 격리 everywear_recovery DB (localhost:3307)
+-- 적용 대상: everywear_recovery DB
 -- OrderDAO와 DeliveryDAO의 위치 기반 INSERT/SELECT 컬럼 순서를 유지한다.
 
 USE everywear_recovery;

@@ -1,34 +1,46 @@
-# 계정·인증 보안 상태
+# 계정·인증 보안
 
-## 적용 완료
+## 비밀번호
 
-- 일반 사용자 cart/wish/address/account/Q&A/review mutation의 공통 인증·POST·CSRF·소유권 검증
-- 관리자 상품·공지 mutation 보호
+- PBKDF2WithHmacSHA256, 600,000회 반복, 사용자별 무작위 salt, 비교 시간이 일정한 비교 사용
+- 저장값에 알고리즘·반복 횟수를 함께 기록하고, 형식이 잘못된 값은 로그인 실패로 처리
+- 기존 평문 비밀번호는 로그인에 성공하면 그 자리에서 해시로 바꿈 (사용자·관리자 모두)
+- 신규 가입·비밀번호 변경·재설정 모두 해시로 저장. 소셜 로그인 계정은 비밀번호 없이 둠
+- 마이페이지 비밀번호 확인·변경에서 비밀번호가 URL에 실리던 문제 수정
 
-- PBKDF2WithHmacSHA256, 600,000 iterations, 사용자별 random salt, constant-time 비교
-- self-describing PBKDF2 저장값과 malformed hash fail-closed
-- 일반 사용자와 관리자 legacy plaintext 로그인 성공 시 점진적 PBKDF2 migration
-- 신규 가입·비밀번호 변경·reset의 PBKDF2 저장, 소셜 계정의 `NULL` 비밀번호 유지
-- 일반·관리자·Naver 로그인 성공 시 session ID 회전
-- 일반 로그인 내부 redirect 검증과 외부 URL·scheme-relative·backslash·CRLF·traversal 차단
-- 관리자 URL 인증 Filter, POST 강제, session CSRF, 안전한 로그아웃
-- FORGOT/UNLOCK 목적 분리, SecureRandom OTP, 5분 만료, 일회성 32-byte reset token의 digest만 session 저장
-- reset 대상·사용자 유형·session·목적·token 검증과 재사용 차단
-- UNLOCK의 비밀번호·계정상태·실패횟수·잠금상태 단일 transaction
-- 일반 사용자 로그아웃 POST·CSRF·session invalidate
-- 마이페이지 비밀번호 확인·변경에서 비밀번호 query string 전달 제거
+## 로그인과 세션
 
-## 검증 범위
+- 일반·관리자·소셜 로그인 성공 시 세션 ID 재발급
+- 로그인 후 이동 주소는 내부 경로만 허용. 외부 URL, `//`로 시작하는 주소, 역슬래시, 줄바꿈, 상위 경로 이동은 차단
+- 5회 실패 시 계정 잠금
+- 사용자·관리자 로그아웃은 POST + CSRF 확인 후 세션 삭제
 
-- Java 21 compile과 관련 JSP compile
-- reset·unlock·logout 및 JDBC failure mock 96건
-- 격리 MySQL과 Browser를 사용한 FORGOT, UNLOCK, 로그인, logout/CSRF E2E
-- 당시 인증 복구 단계에서 fixture 정리 후 15개 테이블 count/digest 기준선 일치(과거 단계 기록)
-- 이후 FINAL INTEGRATED REGRESSION의 consolidated fixture E2E에서 cleanup 후 20/20 table count와 PK 정렬 SHA-256 digest가 실행 직전 기준선과 완전 일치. 최종 판정은 PASS WITH LIMITATIONS([복구 현황](recovery-status.md)).
+## 본인확인과 비밀번호 재설정
 
-실제 SMS/Gmail, Naver OAuth는 외부 서비스 호출 없이 내부 grant·callback 구조까지만 검증했다. 실제 외부 E2E 완료로 표현하지 않는다.
+- 비밀번호 찾기와 계정 잠금 해제의 인증번호를 목적별로 분리
+- 인증번호는 SecureRandom으로 만들고 5분 뒤 만료
+- 인증을 통과하면 32바이트 재설정 토큰을 발급하고, 세션에는 토큰의 해시만 저장
+- 재설정 시 대상 사용자·사용자 유형·세션·목적·토큰을 모두 확인하고, 한 번 쓴 토큰은 다시 쓸 수 없음
+- 잠금 해제 시 비밀번호·계정 상태·실패 횟수·잠금 상태를 하나의 transaction으로 변경
 
-## 남은 범위
+## 요청 보호
 
-- OTP 발송은 세션 cooldown을 적용했다. IP·수신자 단위 제한과 외부 provider 운영 검증은 미완료.
-- 향후 공개 변경분의 credential·개인정보 재검사. 복구 저장소의 기존 history 감사와 별개로, 현재 공개본은 새 root commit `af336ab`에서 시작하며 초기 스냅샷 검사를 완료했다. 기존 recovery history는 포함하지 않는다.
+- 사용자 변경 요청(장바구니·찜·배송지·회원정보·Q&A·리뷰) — 로그인, POST, CSRF, 본인 소유 확인
+- 관리자 URL — 인증 필터로 보호. 미인증 접근은 관리자 로그인 화면으로 이동
+- 관리자 변경 요청(상품·공지·주문·배송·환불) — POST + 관리자 CSRF
+
+## 확인한 범위
+
+- 비밀번호 재설정·잠금 해제·로그아웃과 DB 오류 상황을 흉내 낸 테스트 96건
+- 브라우저에서 비밀번호 찾기, 잠금 해제, 로그인, 로그아웃 흐름 실행
+- 신규 설치 계정의 첫 로그인에서 평문이 해시로 바뀌는 것 확인
+- 관리자 이메일 인증번호 로그인 (실제 메일 수신)
+- Google·Kakao 실제 계정 로그인
+
+## 남은 부분
+
+- 인증번호 재발송은 세션 단위 대기시간(약 60초)만 있습니다. 세션을 새로 받으면 우회할 수 있고, IP·수신번호 단위 제한은 없습니다.
+- 문자 인증(CoolSMS)은 키를 설정하지 않아 실제 발송을 확인하지 못했습니다.
+- 이메일 변경 시 새 주소 확인 절차가 없습니다.
+- 관리자 로그인 인증번호는 세션에 평문으로 저장되고, 만료 시간이 없으며, 사용 후에도 지워지지 않습니다. 비밀번호·이메일 일치 확인과 5회 실패 잠금으로 보완하고 있습니다.
+- Naver 로그인은 화면에서 제외해 실제 로그인을 확인하지 않았습니다.

@@ -1,4 +1,4 @@
--- 격리 everywear_recovery 전용. FAQ 화면(FAQ.jsp)이 읽는 faq 테이블과 원본 FAQ seed.
+-- everywear_recovery 전용. FAQ 화면(FAQ.jsp)이 읽는 faq 테이블과 원본 FAQ seed.
 -- recovery_minimal.sql 이후 아무 때나 1회 적용한다. 재실행하면 FAQ가 중복 입력된다.
 -- 테이블 정의는 db/legacy-original/TABLE.sql 의 faq 정의와 같다.
 -- FaqDAO는 SELECT * 결과를 위치(1: faq_id, 2: faq_title, 3: faq_content)로 읽으므로 컬럼 순서를 유지한다.

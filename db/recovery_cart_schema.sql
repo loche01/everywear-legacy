@@ -1,5 +1,5 @@
--- everyWEAR Lee 기준선 cart 경로용 recovery migration
--- 적용 대상: 격리 everywear_recovery DB (localhost:3307)
+-- everyWEAR 장바구니·찜 경로용 recovery migration
+-- 적용 대상: everywear_recovery DB
 -- 원본 TABLE.sql은 수정하지 않는다.
 -- UserDAO/UserDTO/FavoriteDAO 계약의 SELECT * 컬럼 순서를 보존한다.
 

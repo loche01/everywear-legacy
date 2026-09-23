@@ -23,8 +23,7 @@ import javax.servlet.http.Part;
 /**
  * 관리자 상품 이미지 업로드 전용 검증/저장 helper.
  *
- * PHASE 4 의 {@code Security.AttachmentInput}(Q&A/리뷰 경로) 은 건드리지 않는다.
- * 여기서는 상품 등록(insert) 업로드만 대상으로 한다.
+ * Q&A/리뷰 첨부는 {@code Security.AttachmentInput} 이 담당하고, 여기서는 상품 등록(insert) 업로드만 대상으로 한다.
  *
  * 원칙:
  * - client 파일명/확장자/Content-Type 을 전혀 신뢰하지 않는다.

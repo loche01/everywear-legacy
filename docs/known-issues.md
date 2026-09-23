@@ -1,48 +1,47 @@
-# 알려진 문제와 보류 항목
+# 알려진 문제
 
-## Legacy 종료 전에 처리
+## 기능 한계
 
-- **(완료, PHASE 7 당시)** 첫 공개용 커밋 전에 스냅샷의 credential, 테스트 fixture 및 개인정보 후보를 확인했다. 복구 저장소의 기존 Git history는 이 공개본에 포함하지 않는다.
-- PHASE 8 변경(원본 카탈로그·원본 시각 요소 복원)을 clean release/GitHub에 재반영하기 전, 동일하게 credential·테스트 fixture·개인정보 후보가 새로 유입되지 않았는지 재확인한다. 이번 PHASE 8 작업은 외부 크롤링 이미지 URL과 원본 상품 텍스트를 다시 포함하므로, 개인 handle/credential 재유입 여부를 반드시 재점검한다.
+- **결제** — 테스트 결제창까지만 동작하고 결과는 저장하지 않습니다. 저장하려면 서버에서 PG사에 결제 금액을 다시 확인해야 하는데(`GET /payments/{imp_uid}`), 이 부분을 구현하지 않았습니다.
+- **환불** — 관리자 환불은 DB의 환불 상태(`rf_status`)만 바꿉니다. 실제 PG 취소는 하지 않습니다.
+- **문자 인증** — CoolSMS 키를 설정하지 않아 회원가입, 아이디 찾기, 소셜 회원가입 완료를 끝까지 진행할 수 없습니다. 키가 없으면 발송은 `{"result":"fail"}`로 끝나고 500 오류는 나지 않습니다.
+- **카카오 이메일** — 카카오는 개인 개발자 앱에 이메일을 제공하지 않습니다. 그래서 회원번호로 회원을 식별합니다.
+- **Naver 로그인** — 화면에서 제외했습니다. `NaverLoginServlet`과 관련 보안 코드, `images/Naver.png`는 남겨 두었고 `login.jsp`에 주석으로 다시 붙일 자리를 표시했습니다.
+- **소셜 로그인 기록** — 소셜 로그인은 `user_log`에 기록되지 않습니다. 원본도 일반 로그인만 기록합니다.
+- **관리자 송장·결제 상태** — 송장번호 입력(`admin_update_tracking.jsp`)과 결제 상태 변경(`admin_update_payment_status.jsp`)은 서버 경로만 있고 이를 호출하는 화면이 없습니다.
+- **관리자 리뷰 관리** — 리뷰 댓글·신고 테이블을 복구하지 않아 `crm/reviewAdmin.jsp`를 비활성화했습니다. 조회하면 안내 화면이 나오고, 변경 요청은 410으로 거부됩니다. 회원별 리뷰·문의 조회는 됩니다.
 
-## 해결됨
+## 알려진 오류
 
-- **원본 상품 카탈로그(product 1,518 / product_detail 3,513 / product_image 7,410)를 복원했다.** 합성 24개 Demo seed(`db/demo_product_sample.sql`)는 제거했다. 자세한 내용은 [DB 복구와 데이터 구분](db-recovery.md) 참고.
-- **원래 팀 프로젝트의 main2.jsp 영상·이미지, 로그인/상품 화면의 시각 요소를 복원했다.** `main2.jsp`는 다시 `videos/mainvideo-white.mp4`와 원본 룩북 이미지를 사용한다. 로그인 화면은 원본 team UI의 Google/Kakao 아이콘·레이아웃을 사용한다(Naver는 아래 참고).
-- 미사용 Windows 업로드 절대경로와 호출자 없는 구형 리뷰 삭제 오버로드를 공개본에서 제거했다. 보호된 리뷰 삭제 경로는 유지한다.
+- **소셜 가입 미완료 상태의 500 오류** — 소셜 로그인 후 가입을 마치지 않은 채 회원 전용 화면에 들어가면 500 오류가 납니다. 세션에는 로그인 정보가 있는데 DB에는 회원이 없기 때문입니다.
+  - 해당 화면: `myPage`, `cart2`, `wishList2`, `orderHistory2`, `deliveryMn`, `postMn`, `coupon`, `pay`
+  - 데이터는 손상되지 않고, 로그아웃하면 해소됩니다.
+- **배송 상태 저장 메시지** — 변경 건수가 실제와 다르게 나옵니다. 원본이 목록 전체를 저장하는 방식이기 때문입니다.
+- **OUTER 필터** — JUMPER 상품 16개가 빠집니다. 카테고리 데이터는 `JUMPER OUTER`, 상품 데이터는 `JUMPER`로 표기가 다릅니다.
 
-- PHASE 6: 미검증 결제 경로 안전 마감. `payInsert.jsp`/`payComplete.jsp`/`payProc.jsp`/`sendMSG.jsp` 에서 payment·orders·delivery 생성, 적립금 변경, 장바구니 삭제, 실제 SMS 발송, PortOne SDK 호출을 모두 제거하고 `pay.jsp` 에 Demo 표기를 추가했다. 클라이언트가 결제 성공을 위조해 주문/결제를 확정할 수 있던 경로가 차단되었다.
+## 데이터
 
-## 남은 한계 (Legacy Demo로 유지)
+- **상품 이미지** — 원본 크롤링 당시의 외부 주소(nomanual-shop.com, musinsa, msscdn, sixshop)를 그대로 씁니다. 외부 서비스 상태에 따라 일부가 표시되지 않을 수 있습니다.
+- **사이즈 없는 상품** — 1,518개 중 314개는 원본 데이터에 사이즈 정보가 없어 장바구니에 담을 수 없습니다.
+- **DB와 연결되지 않은 화면** — 다음은 원본 디자인 예시 그대로입니다: `review.jsp`, `pdListAll.jsp`, 상품 상세의 리뷰 영역(★4.8), 쿠폰 화면의 쿠폰 카드.
 
-- Google/Kakao 실제 OAuth E2E는 수행하지 않았다.
-- **Naver 로그인은 로그인 화면 자체에서 이번 UI 복원 범위에서 제외했다.** `NaverLoginServlet`과 관련 `Security` 로직, `images/Naver.png`는 삭제하지 않고 남겨 두었으며(login.jsp의 관련 스크립틀릿은 JSP 주석으로 보존), 추후 별도로 다시 붙일 수 있다.
-- 상품 이미지는 원본 크롤링 당시 외부 CDN(nomanual-shop.com, musinsa, msscdn, sixshop) URL을 그대로 사용한다. 자체 호스팅이 아니므로 외부 서비스 상태에 따라 일부 이미지가 로드되지 않을 수 있다.
-- 원본 상품 1,518개 중 314개는 원본 크롤링 데이터 자체에 사이즈(`product_detail`) 정보가 없어 장바구니에 담을 수 없다.
+## 보안
 
-- 실제 PortOne 서버 검증 API(`GET /payments/{imp_uid}`) 및 실 PG 결제 연동은 구현하지 않았다. 결제는 Demo 안내로만 종료된다.
-- 관리자 refund workflow 는 `refund` 테이블 상태관리(`rf_status`)일 뿐 실제 PG cancellation/환불 호출이 아니다.
-- **이메일 변경 재인증(OTP)은 구현하지 않았다.** `myPage.jsp` → `updateEmail.jsp` 경로는 POST + 로그인 + CSRF + 형식·길이 검증까지만 적용되며, 새 주소 소유 확인이나 기존 주소 통지는 없다. 이메일은 이 프로젝트에서 계정 복구 인자가 아니므로(비밀번호 찾기는 id+name+email 3중 확인) H-2 범위에서 제외했다.
-- **관리자 로그인 OTP(`AdminAuthServlet` / `AdminLogin`)는 전면 재설계하지 않았다.** H-2 에서는 무인증 외부 메일 relay 만 차단했다(POST·form 인코딩·파라미터 중복 거부·수신자를 DB 등록 주소로 고정·발송 실패 전달·SecureRandom). 인증번호를 세션에 평문 저장하고 만료 시각이 별도로 없으며 로그인 성공 후에도 소비되지 않는 문제는 남아 있다. 다만 관리자 로그인은 비밀번호·이메일 일치와 DB 5회 실패 잠금으로 보완된다.
-- **OTP 발송 남용 억제는 세션 단위 쿨다운(약 60초)까지만이다.** 세션을 새로 발급받으면 우회할 수 있다. IP·수신번호 단위 rate limiting 은 reverse proxy/WAF 영역이라 Legacy JSP 범위를 넘는다.
-- **실제 CoolSMS / Gmail 발송 E2E 는 수행하지 않았다.** credential 이 없으면 발송 경로는 안전 비활성화 상태(`{"result":"fail"}`, 500·스택트레이스 없음)로 동작한다. 실제 단말 수신, 문자 본문, 발신번호 사전등록 규정 준수는 미검증이다.
-- `review_comment` / `review_report` 테이블이 recovery DB 에 미복구 상태다. 이 때문에 관리자 CRM 의 리뷰 상세관리(`crm/reviewAdmin.jsp` — 리뷰 댓글 등록/삭제, 리뷰 신고 조회, 리뷰 삭제)는 Legacy 에서 안전 비활성화했다. GET 은 안내 화면만 반환하고, mutation(POST) 요청은 `AdminAuthFilter` 에서 DAO 호출 없이 410 으로 거부된다. `crm/post.jsp` 의 리뷰 상세관리 팝업 진입도 제거했다(회원 리뷰/문의 조회는 유지).
+- **인증번호 재발송 제한** — 세션 단위 대기시간(약 60초)만 있어 세션을 새로 받으면 우회됩니다. IP·수신번호 단위 제한은 웹 서버나 방화벽에서 처리할 부분이라 이 프로젝트 범위에서 뺐습니다.
+- **이메일 변경** — 새 주소 확인 절차가 없습니다. POST·로그인·CSRF·형식 검사만 합니다. 이 프로젝트에서 이메일만으로 계정을 복구할 수는 없습니다(비밀번호 찾기는 아이디·이름·이메일을 모두 확인).
+- **관리자 로그인 인증번호** — 세션에 평문으로 저장되고, 만료 시간이 없으며, 사용 후에도 지워지지 않습니다. 외부 메일 발송에 악용되던 경로는 막았습니다: 수신자를 DB에 등록된 주소로 고정, POST만 허용, SecureRandom 사용.
+- **HTML escaping** — 모든 JSP 출력에 적용하지는 못했습니다.
+- **첨부파일** — 파일과 DB는 보상 처리로 맞추지만 분산 transaction은 아닙니다. 저장 중 서버가 비정상 종료되면 연결되지 않은 파일이 남을 수 있습니다.
 
-## 품질 개선 후보
+## 코드 품질
 
+- 일부 DAO에 `printStackTrace`, 디버그 출력, 예외를 그냥 넘기는 코드, 자원 정리 누락이 남아 있습니다.
+- Tomcat 종료 시 MySQL JDBC 정리 스레드 경고가 나옵니다.
+- favicon 404와 일부 원본 UI 자원 경고가 있습니다.
 
-- review/Q&A 첨부는 PHASE 4에서 DB 성공 후 파일 저장·삭제를 보상 로직으로 맞추도록 정리했다. 분산 transaction은 아니므로 커밋과 파일 조작 사이 비정상 종료 시 고아 파일 가능성이 남는다.
-- Tomcat 종료 시 MySQL JDBC cleanup thread/driver deregistration 경고가 남아 있다.
-- 일부 legacy DAO의 `printStackTrace`와 debug 출력, 예외 삼키기, resource cleanup을 범위별로 정리해야 한다.
-- JSP 출력의 HTML escaping이 전체 적용된 상태가 아니다.
-- favicon 404와 일부 legacy UI 자원 경고가 남아 있다.
+## 이후로 미룬 작업
 
-## Legacy 이후로 보류
-
-- 전체 DAO/transaction 구조 리팩터링
-- 모든 JSP의 MVC 전환
-- 전역 예외·logging framework 재설계
-- Spring Boot 현대화
-- Park/V3의 CRM, 쿠폰, 추가 회원관리 등 신규 기능 병합
-
-Spring Boot 작업은 Legacy GitHub 공개, README와 포트폴리오 마감 이후 별도 기준선에서 시작한다.
+- DAO·transaction 구조 전체 재정리
+- JSP를 MVC 구조로 전환
+- 예외 처리·로깅 방식 재설계
+- Spring Boot로 다시 만들기 (별도 프로젝트)

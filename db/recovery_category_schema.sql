@@ -1,4 +1,4 @@
--- 격리 everywear_recovery 전용. 관리자 상품 목록/수정(admin_product_list.jsp, admin_product_edit.jsp)과
+-- everywear_recovery 전용. 관리자 상품 목록/수정(admin_product_list.jsp, admin_product_edit.jsp)과
 -- AdminProductServlet이 읽는 category 테이블과 원본 category seed.
 -- recovery_minimal.sql 이후 1회 적용한다. category_name이 PK라 재실행하면 중복 오류가 난다.
 -- 테이블 정의는 db/legacy-original/TABLE.sql 의 category 정의와 같다.
